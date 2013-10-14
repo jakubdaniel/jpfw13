@@ -1,0 +1,59 @@
+\documentclass{beamer}
+
+\usetheme{D3S}
+
+\title{Predicate Abstraction in Java Pathfinder}
+\author{%
+  Jakub Daniel\\%
+  Pavel Parizek\\%
+  Corina Pasareanu\\%
+}
+
+\begin{document}
+  \titleframe
+
+  \begin{frame}
+    \frametitle{Predicate Data Abstraction}
+
+    \begin{itemize}
+      \item Abstraction \(\rightarrow\) State Space Reduction
+      \item Predicate Abstraction
+        \begin{itemize}
+          \item Draws a lot of interest
+          \item Finite set of predicates over program variables \(\rightarrow\) finite state space
+        \end{itemize}
+    \end{itemize}
+
+    \begin{center}
+      \includegraphics{fig1}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Predicate Language}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Java Language Support - Arrays}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Symbolic Execution}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Symbolic Variable Aliasing}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Method Call Boundaries}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Weakest Preconditions}
+  \end{frame}
+
+  \begin{frame}
+    \frametitle{Future}
+  \end{frame}
+\end{document}
