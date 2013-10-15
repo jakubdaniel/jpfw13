@@ -1,13 +1,43 @@
 \ProvidesPackage{beamerthemeD3S}[2013/09/24]
 
+\mode<all>
+
+\def\beamer@D3S@true{true}
+\def\beamer@D3S@false{false}
+
+\DeclareOptionBeamer{footlineauthor}{\def\beamer@D3S@footlineauthor{1}}
+\def\beamer@D3S@footlineauthor{0}
+\ProcessOptionsBeamer
+
 \beamertemplatenavigationsymbolsempty
 
-\useoutertheme{split}
-
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{shadowtext}
 \usepackage{forloop}  
 \usepackage[trim]{tokenizer}  
 \usepackage[iso,yyyymmdd]{datetime}
+\usepackage{listings}
+
+\lstset{%
+  language=Java,%
+  tabsize=8,%
+  keepspaces,%
+  extendedchars=true,%
+  basicstyle=\footnotesize,%
+  aboveskip=5pt,%
+  upquote=true,%
+  columns=fixed,%
+  showstringspaces=false,%
+  extendedchars=true,%
+  breaklines=true,%
+  showtabs=true,%
+  showspaces=false,%
+  showstringspaces=false,%
+  escapechar=`,%
+}
+
 
 \newcounter{rrCount}  
 \newcommand{\replace}[3]{% 
@@ -29,6 +59,7 @@
 \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}
 
 \def\titleframe{%
+  \addtocounter{framenumber}{-1}%
   {%
     \setbeamertemplate{headline}{}%
     \setbeamertemplate{frametitle}{}%
@@ -36,42 +67,12 @@
     \setbeamertemplate{background canvas}[vertical shading][top=white,bottom=gray!25]%
     \frame{\titlepage}%
   }%
-  \addtocounter{framenumber}{-1}%
 }
 
 \setbeamertemplate{background canvas}{%
   \vbox to \dimexpr\paperheight - 1em\relax {%
     \vfill%
     \hbox to \paperwidth {\hfill \includegraphics[scale=0.15]{D3SWM}}%
-  }%
-}
-
-\setbeamertemplate{frametitle}{%
-  \vspace{-1cm}%
-  \fontsize{16}{16}\selectfont%
-  \shadowoffset{0.75pt}%
-  \shadowtext{\insertframetitle}%
-}
-
-\setbeamertemplate{headline}{%
-  \vspace{1cm}%
-  \includegraphics[width=\paperwidth]{Head}%
-}
-
-\setbeamertemplate{footline}{%
-  {%
-    \colorbox{gray!50}{%
-      \makebox[\paperwidth][c]{%
-        \makebox[\dimexpr \paperwidth - 1cm\relax]{%
-          {\bf \fontsize{4}{4}\selectfont \insertauthor}%
-          {\fontsize{4}{4}\selectfont, D3S Seminar, \today}%
-          \hfill%
-          {\bf \fontsize{4}{4}\selectfont \inserttitle}%
-          \hfill%
-          {\bf \fontsize{4}{4}\selectfont \insertframenumber}%
-        }%
-      }%
-    }%
   }%
 }
 
@@ -98,4 +99,35 @@
       \replace{, }{\\}{\insertauthor}%
     \end{column}%
   \end{columns}%
+}
+
+\setbeamertemplate{frametitle}{%
+  \vspace{-1cm}%
+  \fontsize{16}{16}\selectfont%
+  \shadowoffset{0.75pt}%
+  \shadowtext{\insertframetitle}%
+}
+
+\setbeamertemplate{headline}{%
+  \vspace{1cm}%
+  \includegraphics[width=\paperwidth]{Head}%
+}
+
+\setbeamertemplate{footline}{%
+  {%
+    \colorbox{gray!50}{%
+      \makebox[\paperwidth][c]{%
+        \hspace{1em}%
+        \if\beamer@D3S@footlineauthor1%
+          {\bf \fontsize{4}{4}\selectfont \insertauthor, }%
+        \fi%
+        {\fontsize{4}{4}\selectfont D3S Seminar, \today}%
+        \hfill%
+        {\bf \fontsize{4}{4}\selectfont \inserttitle}%
+        \hfill%
+        {\bf \fontsize{4}{4}\selectfont \insertframenumber}%
+        \hspace{1em}%
+      }%
+    }%
+  }%
 }

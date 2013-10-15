@@ -1,9 +1,10 @@
 \documentclass{beamer}
 
+%\usetheme[footlineauthor]{D3S}
 \usetheme{D3S}
 
 \title{Predicate Abstraction in Java Pathfinder}
-\author{Jakub Daniel, Pavel Parizek, Corina Pasareanu}
+\author{Jakub Daniel, Pavel Parízek, Corina Păsăreanu}
 
 \begin{document}
   \titleframe
@@ -52,10 +53,28 @@
 
   \begin{frame}
     \frametitle{Symbolic Variable Aliasing}
+
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        \includegraphics[width=\textwidth,keepaspectratio]{slides2}%
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \lstinputlisting[language=Java]{alias.java}
+      \end{column}
+    \end{columns}
   \end{frame}
 
   \begin{frame}
     \frametitle{Method Call Boundaries}
+
+    \begin{columns}[T]
+      \begin{column}{0.5\textwidth}
+        \lstinputlisting[language=Java]{method1.java}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \lstinputlisting[language=Java]{method2.java}
+      \end{column}
+    \end{columns}
   \end{frame}
 
   \begin{frame}
