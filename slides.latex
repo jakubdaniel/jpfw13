@@ -9,7 +9,7 @@
 \begin{document}
   \titleframe
 
-  \begin{frame}[allowframebreaks]{Predicate Data Abstraction}
+  \begin{frame}[allowframebreaks]{Predicate Abstraction}
 
     \begin{itemize}
       \item Abstraction \(\rightarrow\) State Space Reduction
@@ -39,7 +39,7 @@
           \item Predicate language
           \item State representation
           \item Bytecode interpretation
-          \item Valuation inference
+          \item Predicate valuation inference
         \end{itemize}
     \end{itemize}
   \end{frame}
@@ -51,8 +51,7 @@
       \item {\tt sfread(f, c)}
       \item {\tt aread(arr, a, expr)}
       \item {\tt alength(arrlen, a)}
-      \item {\tt =, <, >, <=, >=}
-      \item {\tt expr relop expr}
+      \item {\tt expr relop expr (=, <, >, <=, >=)}
       \item {\tt return}
     \end{itemize}
   \end{frame}
@@ -64,9 +63,9 @@
     {Symbolic Execution}
   \end{frame}
 
-  \begin{frame}{Symbolic Variable Aliasing}
+  \begin{frame}{Affected Predicates - Symbol Aliasing}
     \begin{itemize}
-      \item Detecting impact of instructions
+      \item Detecting impact of bytecode instructions
         \vbox{
           \uncover<2>{
             \vspace{0.25cm}
@@ -95,6 +94,9 @@
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Affected Predicates}
+  \end{frame}
+
   \begin{frame}{Method Call Boundaries}
 
     \begin{columns}[T]
@@ -110,6 +112,12 @@
   \begin{frame}{Weakest Preconditions}
   \end{frame}
 
+  \begin{frame}{Non-determinism}
+  \end{frame}
+
   \begin{frame}{Future - State matching}
+  \end{frame}
+
+  \begin{frame}{Future - Predicate Learning}
   \end{frame}
 \end{document}
