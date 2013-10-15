@@ -17,6 +17,9 @@
         \begin{itemize}
           \item Draws a lot of interest
           \item Finite set of predicates over program variables \(\rightarrow\) finite state space
+            \begin{itemize}
+              \item Test
+            \end{itemize}
         \end{itemize}
     \end{itemize}
 
