@@ -9,8 +9,7 @@
 \begin{document}
   \titleframe
 
-  \begin{frame}
-    \frametitle{Predicate Data Abstraction}
+  \begin{frame}[allowframebreaks]{Predicate Data Abstraction}
 
     \begin{itemize}
       \item Abstraction \(\rightarrow\) State Space Reduction
@@ -27,10 +26,13 @@
     \begin{center}
       \includegraphics{slides1}
     \end{center}
+
+    \framebreak
+
+    \includegraphics{slides3}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Predicate Language}
+  \begin{frame}{Predicate Language}
 
     \begin{itemize}
       \item {\tt fread(f, o)}
@@ -43,29 +45,45 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Java Language Support - Arrays}
+  \begin{frame}{Java Language Support - Arrays}
   \end{frame}
 
   \begin{frame}
-    \frametitle{Symbolic Execution}
+    {Symbolic Execution}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Symbolic Variable Aliasing}
-
-    \begin{columns}[T]
-      \begin{column}{0.5\textwidth}
-        \includegraphics[width=\textwidth,keepaspectratio]{slides2}%
-      \end{column}
-      \begin{column}{0.5\textwidth}
-        \lstinputlisting[language=Java]{alias.java}
-      \end{column}
-    \end{columns}
+  \begin{frame}{Symbolic Variable Aliasing}
+    \begin{itemize}
+      \item Detecting impact of instructions
+        \vbox{
+          \uncover<2>{
+            \vspace{0.25cm}
+            \begin{columns}[T]
+              \begin{column}{0.5\textwidth}
+                \includegraphics[width=\textwidth,keepaspectratio]{slides2}
+              \end{column}
+              \begin{column}{0.5\textwidth}
+                \lstinputlisting[language=Java]{alias2.java}
+              \end{column}
+            \end{columns}
+          }
+          \begin{columns}[T]
+            \begin{column}{0.5\linewidth}
+              \begin{block}{Predicates}
+                \lstinputlisting{alias.pred}
+              \end{block}
+            \end{column}
+            \begin{column}{0.5\linewidth}
+              \begin{block}{Statement}
+                \lstinputlisting[language=Java]{alias1.java}
+              \end{block}
+            \end{column}
+          \end{columns}
+        }
+    \end{itemize}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Method Call Boundaries}
+  \begin{frame}{Method Call Boundaries}
 
     \begin{columns}[T]
       \begin{column}{0.5\textwidth}
@@ -77,11 +95,9 @@
     \end{columns}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Weakest Preconditions}
+  \begin{frame}{Weakest Preconditions}
   \end{frame}
 
-  \begin{frame}
-    \frametitle{Future}
+  \begin{frame}{Future}
   \end{frame}
 \end{document}
