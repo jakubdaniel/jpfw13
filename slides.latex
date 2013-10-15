@@ -32,6 +32,18 @@
     \includegraphics{slides3}
   \end{frame}
 
+  \begin{frame}{Goal}
+    \begin{itemize}
+      \item Predicate abstraction model checker based on Java Pathfinder
+        \begin{itemize}
+          \item Predicate language
+          \item State representation
+          \item Bytecode interpretation
+          \item Valuation inference
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+
   \begin{frame}{Predicate Language}
 
     \begin{itemize}
@@ -98,6 +110,6 @@
   \begin{frame}{Weakest Preconditions}
   \end{frame}
 
-  \begin{frame}{Future}
+  \begin{frame}{Future - State matching}
   \end{frame}
 \end{document}

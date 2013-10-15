@@ -95,6 +95,14 @@ beginfig(3)
   draw (((fullcircle scaled 1u shifted (1u, 0u)) cutbefore (fullcircle scaled 2u shifted (0u, 0u))) cutafter (fullcircle scaled 2u shifted (0u, 0u)))--(((fullcircle rotated 180 scaled 2u shifted (0u, 0u)) cutbefore (fullcircle scaled 1u shifted (1u, 0u))) cutafter (fullcircle scaled 1u shifted (1u, 0u)))--cycle withpen pencircle scaled 1.5 withcolor darkred;
   label(btex \small\sf\bf error etex, (1u, 0u)) withcolor white;
 
+  draw (0u, -0.5u)--(-0.375u, -2.125u)--(0.375u, -2.125u)--cycle withpen pencircle scaled 0.8 dashed evenly withcolor darkblue;
+  label(btex \tiny\sf\bf p etex, (0u, -1.75u)) withcolor darkblue;
+  label(btex \tiny\sf\bf q etex, (0u, -2u)) withcolor darkblue;
+
+  draw (0.8125u, -0.25u)--(0.325u, -1.375u)..(1.3u, -1.375u)--cycle withpen pencircle scaled 0.8 dashed evenly withcolor darkred;
+  label(btex \tiny\sf\bf p etex, (0.8125u, -1u)) withcolor darkred;
+  label(btex \tiny\sf\bf \(\neg\)q etex, (0.8125u, -1.25u)) withcolor darkred;
+
   fill fullcircle scaled 0.125u shifted (0u, -0.5u) withcolor white;
   fill fullcircle scaled 0.125u shifted (0.8125u, -0.25u) withcolor white;
   drawarrow (0u, -0.5u)--(0.8125u, -0.25u) cutafter (fullcircle scaled 0.125u shifted (0.8125u, -0.25u)) withpen pencircle withcolor white dashed evenly;
