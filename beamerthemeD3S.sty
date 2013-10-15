@@ -3,10 +3,29 @@
 \beamertemplatenavigationsymbolsempty
 
 \useoutertheme{split}
-\useinnertheme{circles}
+
 \usepackage{shadowtext}
+\usepackage{forloop}  
+\usepackage[trim]{tokenizer}  
+\usepackage[iso,yyyymmdd]{datetime}
+
+\newcounter{rrCount}  
+\newcommand{\replace}[3]{% 
+  \GetTokens{rrFirst}{rrRest}{#3#1}%
+  \rrFirst%
+  \forloop{rrCount}{0}{\value{rrCount} < 100}{%
+    \ifthenelse{\equal{\rrRest}{}}{%
+      \setcounter{rrCount}{101}%
+    }{% 
+      \GetTokens{rrFirst}{rrRest}{\rrRest}%
+      #2\rrFirst%
+    }%  
+  }%  
+}
 
 \setbeamercolor{frametitle}{fg=black}
+\setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Ball}}
+\setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{Square}}
 
 \def\titleframe{%
   {%
@@ -39,15 +58,17 @@
 }
 
 \setbeamertemplate{footline}{%
-  \colorbox{gray!50}{%
-    \makebox[\paperwidth][c]{%
-      \makebox[\dimexpr \paperwidth - 1cm\relax]{%
-        {\bf \fontsize{4}{4}\selectfont \insertauthor}%
-        {\fontsize{4}{4}\selectfont \;D3S Seminar,\;\number\year-\number\month-\number\day}%
-        \hfill%
-        {\bf \fontsize{4}{4}\selectfont \inserttitle}%
-        \hfill%
-        {\bf \fontsize{4}{4}\selectfont \insertframenumber}%
+  {%
+    \colorbox{gray!50}{%
+      \makebox[\paperwidth][c]{%
+        \makebox[\dimexpr \paperwidth - 1cm\relax]{%
+          {\bf \fontsize{4}{4}\selectfont \insertauthor}%
+          {\fontsize{4}{4}\selectfont, D3S Seminar, \today}%
+          \hfill%
+          {\bf \fontsize{4}{4}\selectfont \inserttitle}%
+          \hfill%
+          {\bf \fontsize{4}{4}\selectfont \insertframenumber}%
+        }%
       }%
     }%
   }%
@@ -73,7 +94,7 @@
     \end{column}%
     \begin{column}[T]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
       \raggedleft \it%
-      \insertauthor%
+      \replace{, }{\\}{\insertauthor}%
     \end{column}%
   \end{columns}%
 }

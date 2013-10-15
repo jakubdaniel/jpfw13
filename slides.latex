@@ -3,11 +3,7 @@
 \usetheme{D3S}
 
 \title{Predicate Abstraction in Java Pathfinder}
-\author{%
-  Jakub Daniel\\%
-  Pavel Parizek\\%
-  Corina Pasareanu\\%
-}
+\author{Jakub Daniel, Pavel Parizek, Corina Pasareanu}
 
 \begin{document}
   \titleframe
@@ -25,12 +21,22 @@
     \end{itemize}
 
     \begin{center}
-      \includegraphics{fig1}
+      \includegraphics{slides1}
     \end{center}
   \end{frame}
 
   \begin{frame}
     \frametitle{Predicate Language}
+
+    \begin{itemize}
+      \item {\tt fread(f, o)}
+      \item {\tt sfread(f, c)}
+      \item {\tt aread(arr, a, expr)}
+      \item {\tt alength(arrlen, a)}
+      \item {\tt =, <, >, <=, >=}
+      \item {\tt expr relop expr}
+      \item {\tt return}
+    \end{itemize}
   \end{frame}
 
   \begin{frame}
