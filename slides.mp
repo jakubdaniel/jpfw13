@@ -19,6 +19,9 @@ color darkblue; darkblue := (0, 112/255, 192/255);
 color red; red := (240/255, 0, 44/255);
 color darkred; darkred := (192/255, 0, 28/255);
 
+color green; green := (44/255, 240/255, 0);
+color darkgreen; darkgreen := (28/255, 192/255, 0);
+
 color gray; gray := (192/255, 192/255, 192/255);
 color darkgray; darkgray := (86/255, 86/255, 86/255);
 
@@ -261,7 +264,7 @@ beginfig(10)
     drawarrow (2u, -3u)--(2u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor darkblue;
   
     label.llft(btex \small\bf .g etex, (-2u + 0.125u, -3u + 0.125u)) withcolor darkblue;
-    label.bot(btex \Huge\bf \checkmark etex, (2u, -3u)) withcolor darkred;
+    label.bot(btex \Huge\bf \checkmark etex, (2u, -3u)) withcolor darkgreen;
   
     draw node((-2u, 0u), btex \small\bf \(\text{ref}_\text{1}\) etex, darkblue, blue);
     draw node(( 2u, 0u), btex \small\bf \(\text{ref}_\text{2}\) etex, darkblue, blue);
