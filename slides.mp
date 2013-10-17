@@ -109,5 +109,30 @@ beginfig(3)
   
 endfig;
 
+beginfig(4)
+  drawarrow (5u, 0u)--(4u, -1u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
+  label.lft(btex \small\sf\bf i = 1 etex, (4.375u, -0.5u)) withcolor darkblue;
+
+  drawarrow (5u, 0u)--(6u, -1u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
+  label.rt(btex \small\sf\bf \(\neg\)(i = 1) etex, (5.625u, -0.5u)) withcolor darkblue;
+
+  fill fullcircle scaled u shifted (5u, 0u) withcolor blue;
+  draw fullcircle scaled u shifted (5u, 0u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  drawarrow (0u, 0u)--(-1u, -1u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
+  label.lft(btex \small\sf\bf i = 1 etex, (-0.625u, -0.5u)) withcolor darkblue;
+
+  drawarrow (0u, 0u)--(1u, -1u) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
+  label.rt(btex \small\sf\bf \(\neg\)(i = 1) etex, (0.625u, -0.5u)) withcolor gray;
+
+  fill fullcircle scaled u shifted (0u, 0u) withcolor blue;
+  draw fullcircle scaled u shifted (0u, 0u) withpen pencircle scaled 1.5 withcolor darkblue;
+  label(btex \small\sf\bf i = 1 etex, (0u, 0u)) withcolor white;
+
+  label.ulft(btex \small\sf\bf a) etex, (-0.5u, 0.5u)) withcolor darkblue;
+  label.ulft(btex \small\sf\bf b) etex, (4.5u, 0.5u)) withcolor darkblue;
+
+endfig;
+
 end
 .

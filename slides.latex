@@ -39,7 +39,7 @@
           \item Predicate language
           \item State representation
           \item Bytecode interpretation
-          \item Predicate valuation inference
+          \item Predicate truth value inference
         \end{itemize}
     \end{itemize}
   \end{frame}
@@ -109,13 +109,39 @@
     \end{columns}
   \end{frame}
 
+  \begin{frame}{Predicate Value Inference}
+    \begin{itemize}
+      \item Using {\bf S}atisfiability {\bf M}odulo {\bf T}heory solver (SMT)
+        \begin{center}
+          {\small\sf\bf SAT(\(\text{a = b} \wedge \underset{\text{Theory of arrays expressions}}{\underbrace{\text{a.x}}\text{ = 1} \wedge \underbrace{\text{b.x}}\text{ = 2}}\)) = false}
+        \end{center}
+      \item Distinguished predicate values:
+        \begin{itemize}
+          \item {\sf\bf true}
+          \item {\sf\bf false}
+          \item {\sf\bf unknown}
+        \end{itemize}
+      \item Determined using Weakest Preconditions
+    \end{itemize}
+  \end{frame}
+
   \begin{frame}{Weakest Preconditions}
   \end{frame}
 
-  \begin{frame}{Non-determinism}
+  \begin{frame}{Branching - Non-determinism}
+    \begin{itemize}
+      \item Control-flow determined by SMT based on known truth values
+        \begin{center}
+          \begin{minipage}{6cm}
+            \lstinputlisting[language=Java]{branching.java}
+          \end{minipage}
+          \includegraphics{slides4}
+        \end{center}
+      \item Learning branching condition predicate
+    \end{itemize}
   \end{frame}
 
-  \begin{frame}{Future - State matching}
+  \begin{frame}{Future - State Matching}
   \end{frame}
 
   \begin{frame}{Future - Predicate Learning}
