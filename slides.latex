@@ -1,6 +1,7 @@
 \documentclass{beamer}
 
 %\usetheme[footlineauthor]{D3S}
+%\usetheme[event={JPF Workshop}]{D3S}
 \usetheme{D3S}
 
 \title{Predicate Abstraction in Java Pathfinder}
@@ -29,38 +30,55 @@
 
     \framebreak
 
-    \includegraphics{slides3}
+    \begin{columns}[c]
+      \begin{column}{0.3\textwidth}
+        \includegraphics[width=\textwidth,keepaspectratio]{slides3}
+      \end{column}
+      \begin{column}{0.7\textwidth}
+         \begin{itemize}
+           \item Dynamic state space exploration
+             \begin{itemize}
+               \item Modelling effects of instructions
+             \end{itemize}
+         \end{itemize}
+      \end{column}
+    \end{columns}
   \end{frame}
 
-  \begin{frame}{Goal}
+  \begin{frame}{The Project Goal}
     \begin{itemize}
       \item Predicate abstraction model checker based on Java Pathfinder
         \begin{itemize}
-          \item Predicate language
-          \item State representation
-          \item Bytecode interpretation
-          \item Predicate truth value inference
+          \item Design
+            \begin{itemize}
+              \item Predicate language
+              \item State representation
+              \item Bytecode interpretation
+              \item Predicate truth value inference
+            \end{itemize}
+          \item Implementation
         \end{itemize}
     \end{itemize}
   \end{frame}
 
   \begin{frame}{Predicate Language}
-
-    \begin{itemize}
-      \item {\tt fread(f, o)}
-      \item {\tt sfread(f, c)}
-      \item {\tt aread(arr, a, expr)}
-      \item {\tt alength(arrlen, a)}
-      \item {\tt expr relop expr (=, <, >, <=, >=)}
-      \item {\tt return}
-    \end{itemize}
-  \end{frame}
-
-  \begin{frame}{Java Language Support - Arrays}
-  \end{frame}
-
-  \begin{frame}
-    {Symbolic Execution}
+    \begin{columns}[c]
+      \begin{column}{0.45\textwidth}
+        \begin{itemize}
+          \item {\tt fread(f, o)}
+          \item {\tt sfread(f, c)}
+          \item {\tt aread(arr, a, expr)}
+          \item {\tt alength(arrlen, a)}
+          \item {\tt =, <, >, <=, >=}
+          \item {\tt return}
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.55\textwidth}
+        \scalebox{0.7}{
+          \lstinputlisting[morekeywords={static,object,method},linewidth=8cm,escapechar=`]{language.pred}
+        }
+      \end{column}
+    \end{columns}
   \end{frame}
 
   \begin{frame}{Affected Predicates - Symbol Aliasing}
@@ -94,7 +112,33 @@
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Affected Predicates - Symbol Aliasing - Arrays}
+    \begin{columns}[c]
+      \begin{column}{0.3\textwidth}
+        \begin{block}{Statement}
+          \lstinputlisting[language=Java]{alias3.java}
+        \end{block}
+      \end{column}
+      \begin{column}{0.7\textwidth}
+        \begin{itemize}
+          \item What array element is selected?
+            \begin{itemize}
+              \item {\sf i} is a symbolic variable
+            \end{itemize}
+        \end{itemize}
+      \end{column}
+    \end{columns}
+    \begin{center}
+      \includegraphics<1>{slides9}
+      \includegraphics<2>{slides10}
+    \end{center}
+  \end{frame}
+ 
   \begin{frame}{Affected Predicates}
+    \begin{itemize}
+      \item Occurrence of an overwritten variable
+      \item Transitive closure of determining predicates
+    \end{itemize}
   \end{frame}
 
   \begin{frame}{Method Call Boundaries}
@@ -121,11 +165,50 @@
           \item {\sf\bf false}
           \item {\sf\bf unknown}
         \end{itemize}
-      \item Determined using Weakest Preconditions
+      \item Predicates in different program locations have different values
+        \begin{itemize}
+          \item Determined using Weakest Preconditions
+        \end{itemize}
     \end{itemize}
   \end{frame}
 
+  \begin{frame}{Symbolic Execution}
+    \begin{center}
+      Suppose a predicate c = 3 \\
+      \vbox to 1.5cm{
+        \vfill
+        \uncover<6>{
+          \Large c = 3 \(\Leftrightarrow\) a + b = 3
+        }
+        \vfill
+      }
+    \end{center}
+    \begin{columns}[c]
+      \begin{column}{0.5\textwidth}
+        \vbox{
+          \small\tt
+          {\color<1>{gray}   iload b } \\
+          {\color<1-2>{gray} iload a } \\
+          {\color<1-3>{gray} iadd    } \\
+          {\color<1-4>{gray} istore c}
+        }
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics<1,5-6>{slides5}
+          \includegraphics<2>{slides6}
+          \includegraphics<3>{slides7}
+          \includegraphics<4>{slides8}
+        \end{center}
+      \end{column}
+    \end{columns}
+  \end{frame}
+
+
   \begin{frame}{Weakest Preconditions}
+    \begin{itemize}
+      \item
+    \end{itemize}
   \end{frame}
 
   \begin{frame}{Branching - Non-determinism}
@@ -138,6 +221,9 @@
           \includegraphics{slides4}
         \end{center}
       \item Learning branching condition predicate
+        \begin{itemize}
+          \item Improves precision
+        \end{itemize}
     \end{itemize}
   \end{frame}
 

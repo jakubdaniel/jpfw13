@@ -2,11 +2,9 @@
 
 \mode<all>
 
-\def\beamer@D3S@true{true}
-\def\beamer@D3S@false{false}
-
-\DeclareOptionBeamer{footlineauthor}{\def\beamer@D3S@footlineauthor{1}}
-\def\beamer@D3S@footlineauthor{0}
+\DeclareOptionBeamer{footlineauthor}{\expandafter\def\csname beamer@D3S@footlineauthor \endcsname{1}}
+\DeclareOptionBeamer{event}[true]{\expandafter\def\csname beamer@D3S@event \endcsname{#1}}
+\ExecuteOptionsBeamer{event=D3S Seminar}
 \ProcessOptionsBeamer
 
 \beamertemplatenavigationsymbolsempty
@@ -118,17 +116,18 @@
 
 \setbeamertemplate{footline}{%
   {%
+    \fontfamily{\sfdefault}\fontseries{l}\fontshape{n}\fontsize{4}{4}\selectfont%
     \colorbox{gray!50}{%
       \makebox[\paperwidth][c]{%
         \hspace{1em}%
-        \if\beamer@D3S@footlineauthor1%
-          {\bf \fontsize{4}{4}\selectfont \insertauthor, }%
+        \expandafter\if\csname beamer@D3S@footlineauthor \endcsname1%
+          \insertauthor, %
         \fi%
-        {\fontsize{4}{4}\selectfont D3S Seminar, \today}%
+        \csname beamer@D3S@event \endcsname, \today%
         \hfill%
-        {\bf \fontsize{4}{4}\selectfont \inserttitle}%
+        \inserttitle%
         \hfill%
-        \hbox to 1cm {\hfill \bf \fontsize{4}{4}\selectfont \insertframenumber}%
+        \hbox to 1cm {\hfill  \insertframenumber}%
         \hspace{1em}%
       }%
     }%
