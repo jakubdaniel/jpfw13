@@ -81,17 +81,18 @@
   \vbox to 1.5cm {%
     \shadowoffset{0.75pt}\shadowtext{\parbox{\textwidth}{\centering \bf \fontsize{24}{24}\selectfont \inserttitle}}%
   }%
+  \vspace{2em}%
   \colorbox{gray}{%
     \makebox[\textwidth][l]{%
       \bf \fontsize{6}{6}\selectfont \color{white} http://d3s.mff.cuni.cz%
     }%
   }%
-  \vspace{0.25cm}%
   \begin{columns}[b]%
     \begin{column}[T]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
       \includegraphics[width=4cm,keepaspectratio]{D3S} \\%
-      \vspace{0.5cm}%
+      \vspace{0.25cm}%
       \hspace{1cm} \includegraphics[width=2cm,keepaspectratio]{CUNI} \\%
+      \vskip-1ex%
       \makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{6}\selectfont \color{gray} CHARLES UNIVERSITY IN PRAGUE} \\%
       \colorbox{gray}{\makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{6}\selectfont \color{white} faculty of mathematics and physics}} \\%
     \end{column}%
@@ -118,18 +119,16 @@
 
 \setbeamertemplate{footline}{%
   {%
-    \fontfamily{\sfdefault}\fontseries{l}\fontshape{n}\fontsize{4}{4}\selectfont%
     \colorbox{gray!50}{%
       \makebox[\paperwidth][c]{%
-        \hspace{1em}%
         \expandafter\if\csname beamer@D3S@footlineauthor \endcsname1%
-          \insertauthor, %
+          \scalebox{0.6}{{\bf \insertauthor}, }%
         \fi%
-        \csname beamer@D3S@event \endcsname, \today%
+        \scalebox{0.6}{\csname beamer@D3S@event \endcsname, \today}%
         \hfill%
-        \inserttitle%
+        \scalebox{0.6}{\bf \inserttitle}%
         \hfill%
-        \hbox to 1cm {\hfill  \insertframenumber}%
+        \hbox to 1cm {\hfill  \scalebox{0.6}{\insertframenumber}}%
         \hspace{1em}%
       }%
     }%
