@@ -4,6 +4,8 @@
 %\usetheme[event={JPF Workshop}]{D3S}
 \usetheme{D3S}
 
+\usepackage{multirow}
+
 \title{Predicate Abstraction in Java Pathfinder}
 \author{Jakub Daniel, Pavel Parízek, Corina Păsăreanu}
 
@@ -13,15 +15,8 @@
   \begin{frame}[allowframebreaks]{Predicate Abstraction}
 
     \begin{itemize}
-      \item Abstraction \(\rightarrow\) State Space Reduction
-      \item Predicate Abstraction
-        \begin{itemize}
-          \item Draws a lot of interest
-          \item Finite set of predicates over program variables \(\rightarrow\) finite state space
-            \begin{itemize}
-              \item Test
-            \end{itemize}
-        \end{itemize}
+      \item Goal: state space reduction
+      \item Finite set of predicates over program variables \(\rightarrow\) finite state space
     \end{itemize}
 
     \begin{center}
@@ -38,25 +33,35 @@
          \begin{itemize}
            \item Dynamic state space exploration
              \begin{itemize}
-               \item Modelling effects of instructions
+               \item Modeling effects of instructions
              \end{itemize}
          \end{itemize}
       \end{column}
     \end{columns}
   \end{frame}
 
-  \begin{frame}{The Project Goal}
+  \begin{frame}{Project Goals}
     \begin{itemize}
-      \item Predicate abstraction model checker based on Java Pathfinder
+      \item Predicate abstraction for Java Pathfinder
+      \item Java Pathfinder
         \begin{itemize}
-          \item Design
-            \begin{itemize}
-              \item Predicate language
-              \item State representation
-              \item Bytecode interpretation
-              \item Predicate truth value inference
-            \end{itemize}
-          \item Implementation
+          \item Custom Java Virtual Machine
+          \item Model checking tool
+          \item Interprets concrete bytecode instructions
+          \item Dynamically explores program's state space
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Challenges}
+    \begin{itemize}
+      \item Predicate language
+      \item Abstract program state representation
+      \item Symbolic bytecode interpretation
+      \item Predicate value inference
+        \begin{itemize}
+          \item Assignments
+          \item Method call boundaries
         \end{itemize}
     \end{itemize}
   \end{frame}
@@ -75,8 +80,43 @@
       \end{column}
       \begin{column}{0.55\textwidth}
         \scalebox{0.7}{
-          \lstinputlisting[morekeywords={static,object,method},linewidth=8cm,escapechar=`]{language.pred}
+          \lstinputlisting[morekeywords={fread,sfread,aread,arr,alength,arrlen},linewidth=8cm,escapechar=`]{language.pred}
         }
+      \end{column}
+    \end{columns}
+    %\begin{center}
+    %  {\small\color{gray} There is a Java-like alternative notation}
+    %\end{center}
+  \end{frame}
+
+  \begin{frame}{Symbolic Execution}
+    Suppose a predicate c = 3 \\
+    \begin{center}
+      \vbox to 1.5cm{
+        \vfill
+        \uncover<6>{
+          \Large c = 3 \(\Leftrightarrow\) a + b = 3
+        }
+        \vfill
+      }
+    \end{center}
+    \begin{columns}[c]
+      \begin{column}{0.5\textwidth}
+        \vbox{
+          \small\tt
+          {\color<1>{gray}   iload b } \\
+          {\color<1-2>{gray} iload a } \\
+          {\color<1-3>{gray} iadd    } \\
+          {\color<1-4>{gray} istore c}
+        }
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \begin{center}
+          \includegraphics<1,5-6>{slides5}
+          \includegraphics<2>{slides6}
+          \includegraphics<3>{slides7}
+          \includegraphics<4>{slides8}
+        \end{center}
       \end{column}
     \end{columns}
   \end{frame}
@@ -136,8 +176,10 @@
  
   \begin{frame}{Affected Predicates}
     \begin{itemize}
-      \item Occurrence of an overwritten variable
-      \item Transitive closure of determining predicates
+      \item Occurrence of overwritten variables
+        \begin{itemize}
+          \item Aliasing
+        \end{itemize}
     \end{itemize}
   \end{frame}
 
@@ -172,42 +214,42 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Symbolic Execution}
-    \begin{center}
-      Suppose a predicate c = 3 \\
-      \vbox to 1.5cm{
-        \vfill
-        \uncover<6>{
-          \Large c = 3 \(\Leftrightarrow\) a + b = 3
-        }
-        \vfill
-      }
-    \end{center}
-    \begin{columns}[c]
-      \begin{column}{0.5\textwidth}
-        \vbox{
-          \small\tt
-          {\color<1>{gray}   iload b } \\
-          {\color<1-2>{gray} iload a } \\
-          {\color<1-3>{gray} iadd    } \\
-          {\color<1-4>{gray} istore c}
-        }
-      \end{column}
-      \begin{column}{0.5\textwidth}
-        \begin{center}
-          \includegraphics<1,5-6>{slides5}
-          \includegraphics<2>{slides6}
-          \includegraphics<3>{slides7}
-          \includegraphics<4>{slides8}
-        \end{center}
-      \end{column}
-    \end{columns}
-  \end{frame}
-
-
   \begin{frame}{Weakest Preconditions}
     \begin{itemize}
-      \item
+      \item Applied to cope with modifying statements
+      \item Recursive construction
+        \begin{columns}[T]
+          \begin{column}{0.5\textwidth}
+            \begin{center}
+              {\only<1>{\color{gray}}x{\only<2>{\color{gray}}.f{\only<3>{\color{gray}}[0]{\only<4>{\color{gray}}.num{\only<5>{\color{gray}}{\only<6-7>{\color{gray}}\;=\;}y{\only<6>{\color{gray}}.num}}}}}}
+            \end{center}
+          \end{column}
+          \begin{column}{0.5\textwidth}
+            \begin{center}
+              \uncover<9->{\lstinline|x.f[i] = y;|}
+            \end{center}
+          \end{column}
+        \end{columns}
+    \end{itemize}
+    \begin{center}
+      \vbox{
+        \invisible{\includegraphics<1>[height=4cm,keepaspectratio]{slides11}} % Reserve space
+        \includegraphics<2>  [height=4cm,keepaspectratio]{slides11}
+        \includegraphics<3>  [height=4cm,keepaspectratio]{slides12}
+        \includegraphics<4>  [height=4cm,keepaspectratio]{slides13}
+        \includegraphics<5>  [height=4cm,keepaspectratio]{slides14}
+        \includegraphics<6>  [height=4cm,keepaspectratio]{slides15}
+        \includegraphics<7>  [height=4cm,keepaspectratio]{slides16}
+        \includegraphics<8-9>[height=4cm,keepaspectratio]{slides17}
+        \includegraphics<10->[height=4cm,keepaspectratio]{slides18}
+      }
+      \visible<11->{\(\text{i = 0} \Rightarrow \text{x.f[0].num = y.num}\)}
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{Determining Predicates}
+    \begin{itemize}
+      \item Transitive closure of determining predicates
     \end{itemize}
   \end{frame}
 
@@ -227,9 +269,12 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Future - State Matching}
+  \begin{frame}{Future Work - State Matching}
+    \begin{itemize}
+      \item Subsumption
+    \end{itemize}
   \end{frame}
 
-  \begin{frame}{Future - Predicate Learning}
+  \begin{frame}{Future Work - Predicate Learning}
   \end{frame}
 \end{document}

@@ -149,7 +149,6 @@ beginfig(3)
   fill fullcircle scaled 0.125u shifted (0u, -0.5u) withcolor white;
   fill fullcircle scaled 0.125u shifted (0.8125u, -0.25u) withcolor white;
   drawarrow (0u, -0.5u)--(0.8125u, -0.25u) cutafter (fullcircle scaled 0.125u shifted (0.8125u, -0.25u)) withpen pencircle withcolor white dashed evenly;
-  
 endfig;
 
 beginfig(4)
@@ -228,16 +227,9 @@ beginfig(8)
   draw stack(i);
 endfig;
 
-picture alias;
+picture aliasi, aliasii, aliasiii;
 
-alias := image(
-  drawarrow (-2u, 0u)--(-2u, -2.5u){down}..{right}(-1.5u, -3u)--(3.5u, -3u){right}..{up}(4u, -2.5u) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
-  drawarrow (0u, -3u)--(0u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
-  drawarrow (2u, -3u)--(2u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
-
-  label.llft(btex \small\bf .g etex, (-2u + 0.125u, -3u + 0.125u)) withcolor gray;
-  label.bot(btex \Huge\bf ? etex, (2u, -3u)) withcolor gray;
-
+aliasi := image(
   draw node((-2u, 0u), btex \small\bf \(\text{ref}_\text{1}\) etex, darkblue, blue);
   draw node(( 2u, 0u), btex \small\bf \(\text{ref}_\text{2}\) etex, darkblue, blue);
   draw edge((-2u, 0u), (2u, 0u), btex \small\bf .f etex, darkblue);
@@ -251,35 +243,260 @@ alias := image(
   draw node((4u, -2u), btex \small\bf \(\text{ref}_\text{5}\) etex, darkblue, blue);
 );
 
+aliasii := image(
+  drawarrow (-2u, 0u)--(-2u, -2.5u){down}..{right}(-1.5u, -3u)--(3.5u, -3u){right}..{up}(4u, -2.5u) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
+  drawarrow (0u, -3u)--(0u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
+  drawarrow (2u, -3u)--(2u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor gray dashed evenly;
+
+  label.llft(btex \small\bf .g etex, (-2u + 0.125u, -3u + 0.125u)) withcolor gray;
+  label.bot(btex \Huge\bf ? etex, (2u, -3u)) withcolor gray;
+
+  draw aliasi;
+);
+
+aliasiii := image(
+  drawarrow (-2u, 0u)--(-2u, -2.5u){down}..{right}(-1.5u, -3u)--(3.5u, -3u){right}..{up}(4u, -2.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+  drawarrow (0u, -3u)--(0u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor darkblue;
+  drawarrow (2u, -3u)--(2u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor darkblue;
+  
+  label.llft(btex \small\bf .g etex, (-2u + 0.125u, -3u + 0.125u)) withcolor darkblue;
+  label.bot(btex \Huge\bf \checkmark etex, (2u, -3u)) withcolor darkgreen;
+  
+  draw aliasi;
+);
+
+def maxbox(expr a, b) = 
+  (llcorner (llcorner a--llcorner b) -- lrcorner(lrcorner a--lrcorner b) -- urcorner(urcorner a--urcorner b) -- ulcorner(ulcorner a--ulcorner b) -- cycle)
+enddef;
+
 beginfig(9)
-  draw alias;
+  draw aliasii;
+
+  setbounds currentpicture to maxbox(aliasii, aliasiii);
 endfig;
 
 beginfig(10)
-  picture img;
+  draw aliasiii;
 
-  img := image(
-    drawarrow (-2u, 0u)--(-2u, -2.5u){down}..{right}(-1.5u, -3u)--(3.5u, -3u){right}..{up}(4u, -2.5u) withpen pencircle scaled 1.5 withcolor darkblue;
-    drawarrow (0u, -3u)--(0u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor darkblue;
-    drawarrow (2u, -3u)--(2u, -2.5u - 1.5) withpen pencircle scaled 1.5 withcolor darkblue;
-  
-    label.llft(btex \small\bf .g etex, (-2u + 0.125u, -3u + 0.125u)) withcolor darkblue;
-    label.bot(btex \Huge\bf \checkmark etex, (2u, -3u)) withcolor darkgreen;
-  
-    draw node((-2u, 0u), btex \small\bf \(\text{ref}_\text{1}\) etex, darkblue, blue);
-    draw node(( 2u, 0u), btex \small\bf \(\text{ref}_\text{2}\) etex, darkblue, blue);
-    draw edge((-2u, 0u), (2u, 0u), btex \small\bf .f etex, darkblue);
-  
-    draw edge((2u, 0u), (0u, -2u), btex \small\bf [0] etex, darkblue);
-    draw edge((2u, 0u), (2u, -2u), btex \small\bf [1] etex, darkblue);
-    draw edge((2u, 0u), (4u, -2u), btex \small\bf [2] etex, darkblue);
-  
-    draw node((0u, -2u), btex \small\bf \(\text{ref}_\text{3}\) etex, darkblue, blue);
-    draw node((2u, -2u), btex \small\bf \(\text{ref}_\text{4}\) etex, darkblue, blue);
-    draw node((4u, -2u), btex \small\bf \(\text{ref}_\text{5}\) etex, darkblue, blue);
-  );
+  setbounds currentpicture to maxbox(aliasii, aliasiii);
+endfig;
 
-  draw img;
+picture expri, exprii, expriii, expriv, exprv, exprvi, exprvii, exprviii;
+
+expri := image(
+  fill fullcircle scaled 0.5u shifted (-0.75u,  -2.25u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (-0.75u,  -2.25u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf x etex,         (-0.75u,  -2.25u)) withcolor white;
+);
+
+exprii := image(
+  draw (-0.75u,  -1.5u)--(-0.75u, -2.25u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (-0.75u,  -1.5u)--(    0u, -2.25u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  fill fullcircle scaled 0.5u shifted (-0.75u,  -1.5u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (-0.75u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf . etex,         (-0.75u,  -1.5u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (    0u,  -2.25u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (    0u,  -2.25u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf f etex,         (    0u,  -2.25u)) withcolor white;
+);
+
+expriii := image(
+  draw (-0.75u, -0.75u)--( -1.5u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (-0.75u, -0.75u)--(-0.75u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (-0.75u, -0.75u)--(    0u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  fill fullcircle scaled 0.5u shifted (-0.75u, -0.75u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (-0.75u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf [ ] etex,       (-0.75u, -0.75u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted ( -1.5u,  -1.5u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted ( -1.5u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf arr etex,       ( -1.5u,  -1.5u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (    0u,  -1.5u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (    0u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf 0 etex,         (   0u,  -1.5u)) withcolor white;
+);
+
+expriv := image(
+  draw (    0u,     0u)--(-0.75u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (    0u,     0u)--(    0u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  fill fullcircle scaled 0.5u shifted (    0u,     0u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (    0u,     0u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf . etex,         (    0u,     0u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (    0u, -0.75u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (    0u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf num etex,       (    0u, -0.75u)) withcolor white;
+);
+
+exprv := image(
+  fill fullcircle scaled 0.5u shifted (  1.5u, -0.75u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (  1.5u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf y etex,         (  1.5u, -0.75u)) withcolor white;
+);
+
+exprvi := image(
+  draw (  1.5u,     0u)--(  1.5u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (  1.5u,     0u)--( 2.25u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  fill fullcircle scaled 0.5u shifted (  1.5u,     0u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (  1.5u,     0u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf . etex,         (  1.5u,     0u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted ( 2.25u, -0.75u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted ( 2.25u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf num etex,       ( 2.25u, -0.75u)) withcolor white;
+);
+
+exprvii := image(
+  draw ( 0.75u,  0.75u)--(    0u,     0u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw ( 0.75u,  0.75u)--(  1.5u,     0u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  fill fullcircle scaled 0.5u shifted ( 0.75u,  0.75u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted ( 0.75u,  0.75u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf = etex,         ( 0.75u,  0.75u)) withcolor white;
+);
+
+exprviii := image(
+  draw ((-3u -2.25u) / 2,  -1.5u)--(-3.75u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred;
+  draw ((-3u -2.25u) / 2,  -1.5u)--(   -3u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred;
+  draw (   -3u, -2.25u)--(-3.75u,    -3u) withpen pencircle scaled 1.5 withcolor darkred;
+  draw (   -3u, -2.25u)--(-2.25u,    -3u) withpen pencircle scaled 1.5 withcolor darkred;
+  draw ((-3u -2.25u) / 2,  -1.5u)--(-2.25u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred;
+  draw ((-3u -2.25u) / 2,  -1.5u)--( -1.5u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred;
+  draw (-0.75u, -0.75u)--((-3u -2.25u) / 2,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (-0.75u, -0.75u)--(-0.75u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+  draw (-0.75u, -0.75u)--(    0u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue;
+
+  fill fullcircle scaled 0.5u shifted (-0.75u, -0.75u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (-0.75u, -0.75u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf [ ] etex,       (-0.75u, -0.75u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (    0u,  -1.5u) withcolor blue; 
+  draw fullcircle scaled 0.5u shifted (    0u,  -1.5u) withpen pencircle scaled 1.5 withcolor darkblue; 
+  label(btex \tiny\bf 0 etex,         (   0u,  -1.5u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted ( (-3u -2.25u) / 2,  -1.5u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted ( (-3u -2.25u) / 2,  -1.5u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf wrt etex,       ( (-3u -2.25u) / 2,  -1.5u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (-3.75u, -2.25u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted (-3.75u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf arr etex,         (-3.75u, -2.25u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (   -3u, -2.25u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted (   -3u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf . etex,         (   -3u, -2.25u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (-3.75u,    -3u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted (-3.75u,    -3u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf x etex,         (-3.75u,    -3u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (-2.25u,    -3u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted (-2.25u,    -3u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf f etex,         (-2.25u,    -3u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted (-2.25u, -2.25u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted (-2.25u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf i etex,         (-2.25u, -2.25u)) withcolor white;
+
+  fill fullcircle scaled 0.5u shifted ( -1.5u, -2.25u) withcolor red; 
+  draw fullcircle scaled 0.5u shifted ( -1.5u, -2.25u) withpen pencircle scaled 1.5 withcolor darkred; 
+  label(btex \tiny\bf y etex,         ( -1.5u, -2.25u)) withcolor white;
+);
+
+picture cexpri, cexprii, cexpriii, cexpriv, cexprv, cexprvi, cexprvii, cexprviii;
+
+cexpri := image(
+  draw expri;
+);
+
+cexprii := image(
+  draw exprii;
+  draw cexpri;
+);
+
+cexpriii := image(
+  draw expriii;
+  draw cexprii;
+);
+
+cexpriv := image(
+  draw expriv;
+  draw cexpriii;
+);
+
+cexprv := image(
+  draw exprv;
+  draw cexpriv;
+);
+
+cexprvi := image(
+  draw exprvi;
+  draw cexprv;
+);
+
+cexprvii := image(
+  draw exprvii;
+  draw cexprvi;
+);
+
+cexprviii := image(
+  draw cexprvii;
+
+  draw image(
+    draw exprvii;
+    draw exprvi;
+    draw exprv;
+    draw expriv;
+    draw exprviii;
+    draw exprii;
+    draw expri;
+  ) shifted (6u, 0u);
+);
+
+beginfig(11)
+  draw cexpri;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(12)
+  draw cexprii;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(13)
+  draw cexpriii;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(14)
+  draw cexpriv;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(15)
+  draw cexprv;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(16)
+  draw cexprvi;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(17)
+  draw cexprvii;
+  setbounds currentpicture to bbox cexprviii;
+endfig;
+
+beginfig(18)
+  draw cexprviii;
+  setbounds currentpicture to bbox cexprviii;
 endfig;
 
 end
