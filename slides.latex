@@ -176,10 +176,18 @@
  
   \begin{frame}{Affected Predicates}
     \begin{itemize}
+      \item Predicates referring to old concrete values
+        \begin{itemize}
+          \item Potentially
+        \end{itemize}
       \item Occurrence of overwritten variables
         \begin{itemize}
           \item Aliasing
         \end{itemize}
+      \item Other predicates keep their value
+        %\begin{itemize}
+        %  \item
+        %\end{itemize}
     \end{itemize}
   \end{frame}
 
