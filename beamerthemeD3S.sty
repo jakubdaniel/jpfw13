@@ -54,10 +54,14 @@
 \setbeamercolor{block title}{fg=black}
 \setbeamercolor{title}{fg=black}
 \setbeamercolor{titlelike}{fg=black}
+\setbeamercolor{enumerate item}{fg=black}
+\setbeamercolor{enumerate subitem}{fg=black}
+\setbeamercolor{enumerate subsubitem}{fg=black}
 
 \setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Item}}
 \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}
 \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}
+\setbeamertemplate{enumerate item}{\hbox to 0.25cm{\fontsize{8}{8}\fontseries{bx}\selectfont \insertenumlabel .}}
 
 \def\titleframe{%
   \addtocounter{framenumber}{-1}%

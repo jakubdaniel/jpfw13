@@ -249,7 +249,19 @@
 
   \begin{frame}{Determining Predicates}
     \begin{itemize}
-      \item Transitive closure of determining predicates
+      \item Predicates potentially affecting valuation of given predicate
+        \begin{itemize}
+          \item Restrict models of given predicate
+          \item Over approximated by shared symbolic variables (e.g. x.f[0])
+        \end{itemize}
+      \item Used to determine predicate value
+        \begin{enumerate}
+          \item Transitive closure of determining predicates
+            \begin{itemize}
+              \item e.g. \(\text{a} \overset{?}{=} \text{3} \rightarrow \text{a} = \text{b} \rightarrow \text{b} = \text{3}\)
+            \end{itemize}
+          \item Consider predicate or negation depending on current valuation
+        \end{enumerate}
     \end{itemize}
   \end{frame}
 
