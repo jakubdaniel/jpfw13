@@ -33,7 +33,7 @@
          \begin{itemize}
            \item Dynamic state space exploration
              \begin{itemize}
-               \item Modeling effects of instructions
+               \item Modeling effects of instructions on a program state
              \end{itemize}
          \end{itemize}
       \end{column}
@@ -46,9 +46,9 @@
       \item Java Pathfinder
         \begin{itemize}
           \item Custom Java Virtual Machine
-          \item Model checking tool
+          \item Model checking tool for Java
           \item Interprets concrete bytecode instructions
-          \item Dynamically explores program's state space
+          \item Dynamically explores program state space
         \end{itemize}
     \end{itemize}
   \end{frame}
@@ -199,7 +199,7 @@
     \begin{itemize}
       \item Using {\bf S}atisfiability {\bf M}odulo {\bf T}heory solver (SMT)
         \begin{center}
-          {\small\sf\bf SAT(\(\text{a = b} \wedge \underset{\text{Theory of arrays expressions}}{\underbrace{\text{a.x}}\text{ = 1} \wedge \underbrace{\text{b.x}}\text{ = 2}}\)) = false}
+          {\small\sf\bf SAT(\(\text{a = b} \wedge \underset{\text{Expressions in theory of arrays}}{\underbrace{\text{a.x}}\text{ = 1} \wedge \underbrace{\text{b.x}}\text{ = 2}}\)) = false}
         \end{center}
       \item Distinguished predicate values:
         \begin{itemize}
@@ -209,14 +209,14 @@
         \end{itemize}
       \item Predicates in different program locations have different values
         \begin{itemize}
-          \item Determined using Weakest Preconditions
+          \item Determined using \emph{weakest preconditions}
         \end{itemize}
     \end{itemize}
   \end{frame}
 
   \begin{frame}{Weakest Preconditions}
     \begin{itemize}
-      \item Applied to cope with modifying statements
+      \item Applied to cope with statements modifying data
       \item Recursive construction
         \begin{columns}[T]
           \begin{column}{0.5\textwidth}
