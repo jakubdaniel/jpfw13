@@ -290,9 +290,16 @@
   \end{frame}
 
   \begin{frame}{Future Work - State Matching}
-    \begin{itemize}
-      \item Subsumption
-    \end{itemize}
+    \begin{columns}[T]
+      \begin{column}{0.7\textwidth}
+        \begin{itemize}
+          \item Subsumption
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.3\textwidth}
+        \includegraphics[height=6cm,keepaspectratio]{slides19}
+      \end{column}
+    \end{columns}
   \end{frame}
 
   \begin{frame}{Future Work - Predicate Learning}

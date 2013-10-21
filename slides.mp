@@ -499,6 +499,21 @@ beginfig(18)
   setbounds currentpicture to bbox cexprviii;
 endfig;
 
+beginfig(19)
+  draw edge(( 0u,  2u), ( 0u,  0u), btex etex, darkblue);
+  draw edge(( 0u,  0u), ( 0u, -2u), btex etex, darkblue);
+  draw nonedge(( 0u, -2u), (-1u, -4u), btex etex, darkgray);
+  draw edge(( 0u, -2u), ( 1u, -4u), btex etex, darkblue);
+  draw edge(( 1u, -4u), ( 0u, -6u), btex etex, darkblue);
+  draw edge(( 1u, -4u), ( 2u, -6u), btex etex, darkblue);
+  draw node(( 0u,  0u), btex \small\bf \(\text{s}_\text{1}\) etex, darkblue, blue);
+  draw node(( 0u, -2u), btex \small\bf \(\text{s}_\text{2}\) etex, darkblue, blue);
+  draw node((-1u, -4u), btex \small\bf \(\text{s}_\text{3}\) etex, darkgray, gray);
+  draw node(( 1u, -4u), btex \small\bf \(\text{s}_\text{4}\) etex, darkblue, blue);
+
+  drawdblarrow ((0u, 0u)..(-2u, -2u)..(-1u, -4u) cutbefore (fullcircle scaled (u + 3) shifted (0u, 0u)) cutafter (fullcircle scaled (u + 3) shifted (-1u, -4u))) withpen pencircle scaled 1.5 withcolor gray;
+endfig;
+
 end
 
 verbatimtex
