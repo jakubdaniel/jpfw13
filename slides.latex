@@ -172,7 +172,7 @@
         \begin{itemize}
           \item What array element is selected?
             \begin{itemize}
-              \item {\sf i} is a symbolic variable
+              \item {\tt i} is a symbolic variable
             \end{itemize}
         \end{itemize}
       \end{column}
