@@ -266,7 +266,7 @@
         \begin{enumerate}
           \item Transitive closure of determining predicates
             \begin{itemize}
-              \item e.g. \(\text{a} \overset{?}{=} \text{3} \rightarrow \text{a} = \text{b} \rightarrow \text{b} = \text{3}\)
+              \item e.g. \(\text{a} \overset{\text{?}}{\text{=}} \text{3} \rightarrow \text{a} \text{=} \text{b} \rightarrow \text{b} \text{=} \text{3}\)
             \end{itemize}
           \item Consider predicate or negation depending on current valuation
         \end{enumerate}
@@ -290,14 +290,23 @@
   \end{frame}
 
   \begin{frame}{Future Work - State Matching}
-    \begin{columns}[T]
+    \begin{columns}[c]
       \begin{column}{0.7\textwidth}
         \begin{itemize}
           \item Subsumption
+            \begin{itemize}
+              \item \(\text{s}_\text{j} \le \text{s}_\text{i} \Leftrightarrow \text{"}\text{s}_\text{j} \rightarrow \text{s}_\text{i}\text{"}\) \\
+              \item e.g. a = 1 \(\ldots\) true \(\le\) a = 1 \(\ldots\) unknown
+            \end{itemize}
         \end{itemize}
       \end{column}
       \begin{column}{0.3\textwidth}
-        \includegraphics[height=6cm,keepaspectratio]{slides19}
+        \invisible{\includegraphics<1>[height=6cm,keepaspectratio]{slides19}} % reserve space
+        \includegraphics<2>[height=6cm,keepaspectratio]{slides19}
+        \includegraphics<3>[height=6cm,keepaspectratio]{slides20}
+        \includegraphics<4>[height=6cm,keepaspectratio]{slides21}
+        \includegraphics<5>[height=6cm,keepaspectratio]{slides22}
+        \includegraphics<6>[height=6cm,keepaspectratio]{slides23}
       \end{column}
     \end{columns}
   \end{frame}

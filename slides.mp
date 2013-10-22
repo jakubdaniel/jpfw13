@@ -499,19 +499,75 @@ beginfig(18)
   setbounds currentpicture to bbox cexprviii;
 endfig;
 
-beginfig(19)
+picture expli, explii, expliii, expliv, explv;
+
+expli := image(
   draw edge(( 0u,  2u), ( 0u,  0u), btex etex, darkblue);
+  draw node(( 0u,  0u), btex \small\bf \(\text{s}_\text{1}\) etex, darkblue, blue);
+);
+
+explii := image(
+  draw node(( 0u, -2u), btex \small\bf \(\text{s}_\text{2}\) etex, darkblue, blue);
   draw edge(( 0u,  0u), ( 0u, -2u), btex etex, darkblue);
+
+  draw expli;
+);
+
+expliii := image(
   draw nonedge(( 0u, -2u), (-1u, -4u), btex etex, darkgray);
+  draw nonedge((-1u, -4u), (-1u, -6u), btex etex, darkgray);
+  draw node((-1u, -4u), btex \small\bf \(\text{s}_\text{3}\) etex, darkgray, gray);
+
+  draw explii;
+);
+
+expliv := image(
+  drawarrow ((-1u, -4u)..(-2u, -2u)..(0u, 0u) cutafter(fullcircle scaled (u + 1.5) shifted (0u, 0u)) cutbefore (fullcircle scaled (u + 1.5) shifted (-1u, -4u))) withpen pencircle scaled 1.5 withcolor gray;
+  label.lft(btex \small\bf \(\le\) etex, (-2u, -2u)) withcolor gray;
+
+  draw expliii;
+);
+
+explv := image(
   draw edge(( 0u, -2u), ( 1u, -4u), btex etex, darkblue);
   draw edge(( 1u, -4u), ( 0u, -6u), btex etex, darkblue);
   draw edge(( 1u, -4u), ( 2u, -6u), btex etex, darkblue);
-  draw node(( 0u,  0u), btex \small\bf \(\text{s}_\text{1}\) etex, darkblue, blue);
-  draw node(( 0u, -2u), btex \small\bf \(\text{s}_\text{2}\) etex, darkblue, blue);
-  draw node((-1u, -4u), btex \small\bf \(\text{s}_\text{3}\) etex, darkgray, gray);
   draw node(( 1u, -4u), btex \small\bf \(\text{s}_\text{4}\) etex, darkblue, blue);
 
-  drawdblarrow ((0u, 0u)..(-2u, -2u)..(-1u, -4u) cutbefore (fullcircle scaled (u + 3) shifted (0u, 0u)) cutafter (fullcircle scaled (u + 3) shifted (-1u, -4u))) withpen pencircle scaled 1.5 withcolor gray;
+  draw expliv;
+);
+
+beginfig(19)
+  draw expli;
+
+  setbounds currentpicture to bbox explv;
+endfig;
+
+beginfig(20)
+  draw explii;
+
+  setbounds currentpicture to bbox explv;
+endfig;
+
+beginfig(21)
+  draw edge(( 0u, -2u), (-1u, -4u), btex etex, darkblue);
+  draw node((-1u, -4u), btex \small\bf \(\text{s}_\text{3}\) etex, darkblue, blue);
+
+  draw explii;
+
+  setbounds currentpicture to bbox explv;
+endfig;
+
+beginfig(22)
+  draw expliv;
+
+  setbounds currentpicture to bbox explv;
+endfig;
+
+beginfig(23)
+  draw explv;
+
+  setbounds currentpicture to bbox explv;
 endfig;
 
 end
