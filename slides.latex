@@ -210,9 +210,9 @@
       \end{column}
     \end{columns}
     \begin{itemize}
-      \item Reference arguments
+      \item Arguments passed by reference
       \item Static fields
-      \item Different sets of locals
+      \item Different sets of local variables
       \item Return values
     \end{itemize}
   \end{frame}
@@ -312,6 +312,7 @@
     \begin{columns}[c]
       \begin{column}{0.6\textwidth}
         \begin{itemize}
+          \item Equal program counters
           \item Subsumption
             \begin{itemize}
               \item \(\text{s}_\text{j} \le \text{s}_\text{i} \Leftrightarrow \text{"}\text{s}_\text{j} \rightarrow \text{s}_\text{i}\text{"}\) \\
@@ -343,8 +344,8 @@
         \end{itemize}
       \item {\bf C}ounter{\bf e}xample-{\bf G}uided {\bf A}bstraction {\bf R}efinement (CEGAR)
         \begin{itemize}
-          \item Static analysis
           \item Error trace analysis
+          \item Static analysis
           \item Heuristics backed by experiments
         \end{itemize}
     \end{itemize}
