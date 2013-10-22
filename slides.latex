@@ -291,16 +291,20 @@
 
   \begin{frame}{Future Work - State Matching}
     \begin{columns}[c]
-      \begin{column}{0.7\textwidth}
+      \begin{column}{0.6\textwidth}
         \begin{itemize}
           \item Subsumption
             \begin{itemize}
               \item \(\text{s}_\text{j} \le \text{s}_\text{i} \Leftrightarrow \text{"}\text{s}_\text{j} \rightarrow \text{s}_\text{i}\text{"}\) \\
-              \item e.g. a = 1 \(\ldots\) true \(\le\) a = 1 \(\ldots\) unknown
+              \item e.g.
+                \begin{itemize}
+                  \item (a = 1) \(\le\) (a > 0)
+                  \item (a = 1) \(\le\) (a \(\text{=}^\text{\tiny unknown}\) 1) 
+                \end{itemize}
             \end{itemize}
         \end{itemize}
       \end{column}
-      \begin{column}{0.3\textwidth}
+      \begin{column}{0.4\textwidth}
         \invisible{\includegraphics<1>[height=6cm,keepaspectratio]{slides19}} % reserve space
         \includegraphics<2>[height=6cm,keepaspectratio]{slides19}
         \includegraphics<3>[height=6cm,keepaspectratio]{slides20}
@@ -312,5 +316,13 @@
   \end{frame}
 
   \begin{frame}{Future Work - Predicate Learning}
+    \begin{itemize}
+      \item Current state
+        \begin{itemize}
+          \item User-defined predicates
+          \item Branching conditions
+        \end{itemize}
+      \item {\bf C}ounter{\bf e}xample-{\bf G}uided {\bf A}bstraction {\bf R}efinement (CEGAR)
+    \end{itemize}
   \end{frame}
 \end{document}
