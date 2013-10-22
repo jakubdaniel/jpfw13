@@ -192,7 +192,6 @@
   \end{frame}
 
   \begin{frame}{Method Call Boundaries}
-
     \begin{columns}[T]
       \begin{column}{0.5\textwidth}
         \lstinputlisting[language=Java]{method1.java}
@@ -201,6 +200,12 @@
         \lstinputlisting[language=Java]{method2.java}
       \end{column}
     \end{columns}
+    \begin{itemize}
+      \item Reference arguments
+      \item Static fields
+      \item Different sets of locals
+      \item Return values
+    \end{itemize}
   \end{frame}
 
   \begin{frame}{Predicate Value Inference}
