@@ -77,7 +77,7 @@
 
   \begin{frame}{Predicate Language}
     \begin{columns}[c]
-      \begin{column}{0.45\textwidth}
+      \begin{column}{0.5\textwidth}
         \begin{itemize}
           \item {\tt fread(f, o)}
           \item {\tt sfread(f, c)}
@@ -87,8 +87,8 @@
           \item {\tt return}
         \end{itemize}
       \end{column}
-      \begin{column}{0.55\textwidth}
-        \scalebox{0.7}{
+      \begin{column}{0.5\textwidth}
+        \scalebox{0.6}{
           \lstinputlisting[morekeywords={fread,sfread,aread,arr,alength,arrlen},linewidth=8cm,escapechar=`]{language.pred}
         }
       \end{column}
@@ -99,12 +99,12 @@
   \end{frame}
 
   \begin{frame}{Symbolic Execution}
-    Suppose a predicate c = 3 \\
+    Suppose a predicate {\tt c = 3}\\
     \begin{center}
       \vbox to 1.5cm{
         \vfill
         \uncover<6>{
-          \Large c = 3 \(\Leftrightarrow\) a + b = 3
+          \Large\tt c = 3 \(\Leftrightarrow\) a + b = 3
         }
         \vfill
       }
@@ -221,13 +221,18 @@
     \begin{itemize}
       \item Using {\bf S}atisfiability {\bf M}odulo {\bf T}heory solver (SMT)
         \begin{center}
-          {\small\sf\bf SAT(\(\text{a = b} \wedge \underset{\text{Expressions in theory of arrays}}{\underbrace{\text{a.x}}\text{ = 1} \wedge \underbrace{\text{b.x}}\text{ = 2}}\)) = false}
+          {\tt
+            \begin{tabular}{rp{1cm}cp{0.5cm}lcp{0.5cm}ll}
+              SAT( & $\text{a = b}$ & $\wedge$ & $\underbrace{\text{a.x}}$ & $\text{ = 1}$ & $\wedge$ & $\underbrace{\text{b.y}}$ & $\text{ = 2}$ & ) \\
+                   &                &          & \multicolumn{4}{c}{\tiny\sf Expressions in theory of arrays}                                         \\
+            \end{tabular}
+          }
         \end{center}
       \item Distinguished predicate values:
         \begin{itemize}
-          \item {\sf\bf true}
-          \item {\sf\bf false}
-          \item {\sf\bf unknown}
+          \item {\tt true}
+          \item {\tt false}
+          \item {\tt unknown}
         \end{itemize}
       \item Predicates in different program locations have different values
         \begin{itemize}
@@ -243,7 +248,7 @@
         \begin{columns}[T]
           \begin{column}{0.5\textwidth}
             \begin{center}
-              {\only<1>{\color{gray}}x{\only<2>{\color{gray}}.f{\only<3>{\color{gray}}[0]{\only<4>{\color{gray}}.num{\only<5>{\color{gray}}{\only<6-7>{\color{gray}}\;=\;}y{\only<6>{\color{gray}}.num}}}}}}
+              {\tt \only<1>{\color{gray}}x{\only<2>{\color{gray}}.f{\only<3>{\color{gray}}[0]{\only<4>{\color{gray}}.num{\only<5>{\color{gray}}{\only<6-7>{\color{gray}}\;=\;}y{\only<6>{\color{gray}}.num}}}}}}
             \end{center}
           \end{column}
           \begin{column}{0.5\textwidth}
@@ -265,7 +270,7 @@
         \includegraphics<8-9>[height=4cm,keepaspectratio]{slides17}
         \includegraphics<10->[height=4cm,keepaspectratio]{slides18}
       }
-      \visible<11->{\(\text{i = 0} \Rightarrow \text{x.f[0].num = y.num}\)}
+      \visible<11->{\tt \(\text{i = 0} \Rightarrow \text{x.f[0].num = y.num}\)}
     \end{center}
   \end{frame}
 
@@ -274,13 +279,13 @@
       \item Predicates potentially affecting valuation of given predicate
         \begin{itemize}
           \item Restrict models of given predicate
-          \item Over approximated by shared symbolic variables (e.g. x.f[0])
+          \item Overapproximated by shared symbols (e.g. {\tt x.f[0]})
         \end{itemize}
       \item Used to determine predicate value
         \begin{enumerate}
           \item Transitive closure of determining predicates
             \begin{itemize}
-              \item e.g. \(\text{a} \overset{\text{?}}{\text{=}} \text{3} \rightarrow \text{a} \text{=} \text{b} \rightarrow \text{b} \text{=} \text{3}\)
+              \item e.g. {\tt \(\text{a} \overset{\text{?}}{\text{=}} \text{3} \rightarrow \text{a} \text{=} \text{b} \rightarrow \text{b} \text{=} \text{3}\)}
             \end{itemize}
           \item Consider predicate or negation depending on current valuation
         \end{enumerate}
@@ -291,7 +296,7 @@
     \begin{itemize}
       \item Control-flow determined by SMT based on known truth values
         \begin{center}
-          \begin{minipage}{6cm}
+          \begin{minipage}{6.5cm}
             \lstinputlisting[language=Java]{branching.java}
           \end{minipage}
           \includegraphics{slides4}
@@ -312,8 +317,8 @@
               \item \(\text{s}_\text{j} \le \text{s}_\text{i} \Leftrightarrow \text{"}\text{s}_\text{j} \rightarrow \text{s}_\text{i}\text{"}\) \\
               \item e.g.
                 \begin{itemize}
-                  \item (a = 1) \(\le\) (a > 0)
-                  \item (a = 1) \(\le\) (a \(\text{=}^\text{\tiny unknown}\) 1) 
+                  \item ({\tt a = 1}) \(\le\) ({\tt a > 0})
+                  \item ({\tt a = 1}) \(\le\) ({\tt a \(\text{=}^\text{\tiny unknown}\) 1}) 
                 \end{itemize}
             \end{itemize}
         \end{itemize}

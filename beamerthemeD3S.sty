@@ -11,6 +11,7 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{courier}
 \usepackage[T1]{fontenc}
 \usepackage{shadowtext}
 \usepackage{forloop}  
@@ -18,19 +19,26 @@
 \usepackage[iso,yyyymmdd]{datetime}
 \usepackage{listings}
 
+\definecolor{d3s_comment}{rgb}{0.12, 0.38, 0.18}
+\definecolor{d3s_keyword}{rgb}{0.37, 0.08, 0.25}
+\definecolor{d3s_string}{rgb}{0.06, 0.10, 0.98}
+
 \lstset{%
   language=Java,%
-  tabsize=8,%
+  tabsize=2,%
   keepspaces,%
   extendedchars=true,%
-  basicstyle=\footnotesize,%
+  basicstyle=\footnotesize\tt,%
+  commentstyle=\color{d3s_comment},%
+  keywordstyle=\color{d3s_keyword}\bfseries,%
+  stringstyle=\color{d3s_string}\itshape,%
   aboveskip=5pt,%
   upquote=true,%
   columns=fixed,%
   showstringspaces=false,%
   extendedchars=true,%
   breaklines=true,%
-  showtabs=true,%
+  showtabs=false,%
   showspaces=false,%
   showstringspaces=false,%
   escapechar=`,%
