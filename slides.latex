@@ -1,8 +1,8 @@
 \documentclass{beamer}
 
 %\usetheme[footlineauthor]{D3S}
-%\usetheme[event={JPF Workshop}]{D3S}
-\usetheme{D3S}
+\usetheme[event={JPF Workshop}]{D3S}
+%\usetheme{D3S}
 
 \usepackage{multirow}
 
@@ -202,10 +202,10 @@
 
   \begin{frame}{Method Call Boundaries}
     \begin{columns}[T]
-      \begin{column}{0.5\textwidth}
+      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
         \lstinputlisting[language=Java]{method1.java}
       \end{column}
-      \begin{column}{0.5\textwidth}
+      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
         \lstinputlisting[language=Java]{method2.java}
       \end{column}
     \end{columns}
@@ -222,9 +222,9 @@
       \item Using {\bf S}atisfiability {\bf M}odulo {\bf T}heory solver (SMT)
         \begin{center}
           {\tt
-            \begin{tabular}{rp{1cm}cp{0.5cm}lcp{0.5cm}ll}
-              SAT( & $\text{a = b}$ & $\wedge$ & $\underbrace{\text{a.x}}$ & $\text{ = 1}$ & $\wedge$ & $\underbrace{\text{b.y}}$ & $\text{ = 2}$ & ) \\
-                   &                &          & \multicolumn{4}{c}{\tiny\sf Expressions in theory of arrays}                                         \\
+            \begin{tabular}{p{1cm}cp{0.5cm}lcp{0.5cm}l}
+              $\text{a = b}$ & $\wedge$ & $\underbrace{\text{a.x}}$ & $\text{ = 1}$ & $\wedge$ & $\underbrace{\text{b.x}}$ & $\text{ = 2}$ \\
+                             &          & \multicolumn{4}{c}{\tiny\sf Expressions in theory of arrays}                                     \\
             \end{tabular}
           }
         \end{center}
@@ -234,10 +234,7 @@
           \item {\tt false}
           \item {\tt unknown}
         \end{itemize}
-      \item Predicates in different program locations have different values
-        \begin{itemize}
-          \item Determined using \emph{weakest preconditions}
-        \end{itemize}
+      \item Predicate values determined using \emph{weakest preconditions}
     \end{itemize}
   \end{frame}
 
