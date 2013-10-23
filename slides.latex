@@ -243,15 +243,15 @@
       \item Applied to cope with statements modifying data
       \item Recursive construction
         \begin{columns}[T]
-          \begin{column}{0.5\textwidth}
-            \begin{center}
+          \begin{column}{0.4\textwidth}
+            \begin{block}{Predicate}
               {\tt \only<1>{\color{gray}}x{\only<2>{\color{gray}}.f{\only<3>{\color{gray}}[0]{\only<4>{\color{gray}}.num{\only<5>{\color{gray}}{\only<6-7>{\color{gray}}\;=\;}y{\only<6>{\color{gray}}.num}}}}}}
-            \end{center}
+            \end{block}
           \end{column}
-          \begin{column}{0.5\textwidth}
-            \begin{center}
-              \uncover<9->{\lstinline|x.f[i] = y;|}
-            \end{center}
+          \begin{column}{0.4\textwidth}
+            \begin{block}{Statement}
+              {\only<1-8>{\color{gray}} \lstinline|x.f[i] = y;|}
+            \end{block}
           \end{column}
         \end{columns}
     \end{itemize}
@@ -267,7 +267,7 @@
         \includegraphics<8-9>[height=4cm,keepaspectratio]{slides17}
         \includegraphics<10->[height=4cm,keepaspectratio]{slides18}
       }
-      \visible<11->{\tt \(\text{i = 0} \Rightarrow \text{x.f[0].num = y.num}\)}
+      %\visible<11->{\tt \(\text{i = 0} \Rightarrow \text{x.f[0].num = y.num}\)}
     \end{center}
   \end{frame}
 
