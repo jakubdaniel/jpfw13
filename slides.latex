@@ -13,13 +13,16 @@
   \titleframe
 
   \begin{frame}{State Space Traversal}
+  \end{frame}
+
+  \begin{frame}{Predicate Abstraction}
     \begin{itemize}
       \item Finite set of predicates over program variables \(\rightarrow\) finite state space
-        \begin{center}
-          \includegraphics{slides1}
-        \end{center}
-      \item Goal of abstraction: state space reduction
+      \item State space reduction
     \end{itemize}
+    \begin{center}
+      \includegraphics{slides1}
+    \end{center}
   \end{frame}
 
 %  \begin{frame}{Predicate Abstraction}
