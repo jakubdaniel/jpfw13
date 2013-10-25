@@ -288,7 +288,7 @@
         \begin{enumerate}
           \item Transitive closure construction
             \begin{itemize}
-              \item e.g. {\tt \begin{tabular}{ccccc}a \(\overset{\text{?}}{\text{=}}\) 3 & \(\rightarrow\) & a = b & \(\rightarrow\) & b = 3 \end{tabular}}
+              \item e.g. {\tt \begin{tabular}{ccccc}a \(\overset{\text{?}}{\text{=}}\) 3 & \(\leadsto\) & a = b & \(\leadsto\) & b = 3 \end{tabular}}
             \end{itemize}
           \item Consider predicate or negation depending on current valuation
             \begin{itemize}
