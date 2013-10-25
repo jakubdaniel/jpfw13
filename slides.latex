@@ -12,42 +12,40 @@
 \begin{document}
   \titleframe
 
-  \begin{frame}[allowframebreaks]{Predicate Abstraction}
-
+  \begin{frame}{State Space Traversal}
     \begin{itemize}
-      \item Goal: state space reduction
       \item Finite set of predicates over program variables \(\rightarrow\) finite state space
+        \begin{center}
+          \includegraphics{slides1}
+        \end{center}
+      \item Goal of abstraction: state space reduction
     \end{itemize}
-
-    \begin{center}
-      \includegraphics{slides1}
-    \end{center}
-
-    \framebreak
-
-    \begin{columns}[c]
-      \begin{column}{0.3\textwidth}
-        \includegraphics[width=\textwidth,keepaspectratio]{slides3}
-      \end{column}
-      \begin{column}{0.7\textwidth}
-         \begin{itemize}
-           \item Dynamic state space exploration
-             \begin{itemize}
-               \item Modeling effects of instructions on a program state
-             \end{itemize}
-           \item Counterexample
-             \begin{itemize}
-               \item Feasible witness
-               \item Infeasible spurious error
-             \end{itemize}
-           \item Refinement
-             \begin{itemize}
-               \item Lazy abstraction
-             \end{itemize}
-         \end{itemize}
-      \end{column}
-    \end{columns}
   \end{frame}
+
+%  \begin{frame}{Predicate Abstraction}
+%    \begin{columns}[c]
+%      \begin{column}{0.3\textwidth}
+%        \includegraphics[width=\textwidth,keepaspectratio]{slides3}
+%      \end{column}
+%      \begin{column}{0.7\textwidth}
+%         \begin{itemize}
+%           \item Dynamic state space exploration
+%             \begin{itemize}
+%               \item Modeling effects of instructions on a program state
+%             \end{itemize}
+%           \item Counterexample
+%             \begin{itemize}
+%               \item Feasible witness
+%               \item Infeasible spurious error
+%             \end{itemize}
+%           \item Refinement
+%             \begin{itemize}
+%               \item Lazy abstraction
+%             \end{itemize}
+%         \end{itemize}
+%      \end{column}
+%    \end{columns}
+%  \end{frame}
 
   \begin{frame}{Project Goals}
     \begin{itemize}
@@ -58,6 +56,9 @@
           \item Model checking tool for Java
           \item Interprets concrete bytecode instructions
           \item Dynamically explores program state space
+            \begin{itemize}
+              \item Modeling effects of instructions on a program state
+            \end{itemize}
         \end{itemize}
     \end{itemize}
   \end{frame}
@@ -65,7 +66,6 @@
   \begin{frame}{Challenges}
     \begin{itemize}
       \item Predicate language
-      \item Abstract program state representation
       \item Symbolic bytecode interpretation
       \item Predicate value inference
         \begin{itemize}
@@ -73,6 +73,12 @@
           \item Method call boundaries
         \end{itemize}
     \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \begin{center}
+      \Huge Predicate Language
+    \end{center}
   \end{frame}
 
   \begin{frame}{Predicate Language}
@@ -83,19 +89,26 @@
           \item {\tt sfread(f, c)}
           \item {\tt aread(arr, a, expr)}
           \item {\tt alength(arrlen, a)}
+          \item {\tt +, -, *, /}
           \item {\tt =, <, >, <=, >=}
           \item {\tt return}
         \end{itemize}
       \end{column}
       \begin{column}{0.5\textwidth}
         \scalebox{0.6}{
-          \lstinputlisting[morekeywords={fread,sfread,aread,arr,alength,arrlen},linewidth=8cm,escapechar=`]{language.pred}
+          \lstinputlisting[morekeywords={fread,sfread,aread,arr,alength,arrlen},linewidth=8.5cm,escapechar=`]{language.pred}
         }
       \end{column}
     \end{columns}
     %\begin{center}
     %  {\small\color{gray} There is a Java-like alternative notation}
     %\end{center}
+  \end{frame}
+
+  \begin{frame}
+    \begin{center}
+      \Huge Symbolic Execution
+    \end{center}
   \end{frame}
 
   \begin{frame}{Symbolic Execution}
@@ -110,16 +123,16 @@
       }
     \end{center}
     \begin{columns}[c]
-      \begin{column}{0.5\textwidth}
+      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
         \vbox{
           \small\tt
-          {\color<1>{gray}   iload b } \\
-          {\color<1-2>{gray} iload a } \\
-          {\color<1-3>{gray} iadd    } \\
-          {\color<1-4>{gray} istore c}
+          {\color<1>{gray}   load b } \\
+          {\color<1-2>{gray} load a } \\
+          {\color<1-3>{gray} add    } \\
+          {\color<1-4>{gray} store c}
         }
       \end{column}
-      \begin{column}{0.5\textwidth}
+      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
         \begin{center}
           \includegraphics<1,5-6>{slides5}
           \includegraphics<2>{slides6}
@@ -130,7 +143,13 @@
     \end{columns}
   \end{frame}
 
-  \begin{frame}{Affected Predicates - Symbol Aliasing}
+  \begin{frame}
+    \begin{center}
+      \Huge Predicate Value Inference
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{Affected Predicates -- Symbol Aliasing}
     \begin{itemize}
       \item Detecting impact of bytecode instructions
         \vbox{
@@ -161,7 +180,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Affected Predicates - Symbol Aliasing - Arrays}
+  \begin{frame}{Affected Predicates -- Symbol Aliasing -- Arrays}
     \begin{columns}[c]
       \begin{column}{0.3\textwidth}
         \begin{block}{Statement}
@@ -200,23 +219,6 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Method Call Boundaries}
-    \begin{columns}[T]
-      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
-        \lstinputlisting[language=Java]{method1.java}
-      \end{column}
-      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
-        \lstinputlisting[language=Java]{method2.java}
-      \end{column}
-    \end{columns}
-    \begin{itemize}
-      \item Arguments passed by reference
-      \item Static fields
-      \item Different sets of local variables
-      \item Return values
-    \end{itemize}
-  \end{frame}
-
   \begin{frame}{Predicate Value Inference}
     \begin{itemize}
       \item Using {\bf S}atisfiability {\bf M}odulo {\bf T}heory solver (SMT)
@@ -243,12 +245,12 @@
       \item Applied to cope with statements modifying data
       \item Recursive construction
         \begin{columns}[T]
-          \begin{column}{0.4\textwidth}
+          \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
             \begin{block}{Predicate}
               {\tt \only<1>{\color{gray}}x{\only<2>{\color{gray}}.f{\only<3>{\color{gray}}[0]{\only<4>{\color{gray}}.num{\only<5>{\color{gray}}{\only<6-7>{\color{gray}}\;=\;}y{\only<6>{\color{gray}}.num}}}}}}
             \end{block}
           \end{column}
-          \begin{column}{0.4\textwidth}
+          \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
             \begin{block}{Statement}
               {\only<1-8>{\color{gray}} \lstinline|x.f[i] = y;|}
             \end{block}
@@ -272,24 +274,60 @@
   \end{frame}
 
   \begin{frame}{Determining Predicates}
+    Suppose predicate \(p\)
+    \vspace{1em}
     \begin{itemize}
-      \item Predicates potentially affecting valuation of given predicate
+      \item Set of predicates \(D\) affecting valuation of the predicate \(p\)
         \begin{itemize}
-          \item Restrict models of given predicate
+          %\item Restrict models of given predicate
           \item Overapproximated by shared symbols (e.g. {\tt x.f[0]})
         \end{itemize}
       \item Used to determine predicate value
         \begin{enumerate}
           \item Transitive closure of determining predicates
             \begin{itemize}
-              \item e.g. {\tt \(\text{a} \overset{\text{?}}{\text{=}} \text{3} \rightarrow \text{a} \text{=} \text{b} \rightarrow \text{b} \text{=} \text{3}\)}
+              \item e.g. {\tt \begin{tabular}{ccccc}a \(\overset{\text{?}}{\text{=}}\) 3 & \(\rightarrow\) & a = b & \(\rightarrow\) & b = 3 \end{tabular}}
             \end{itemize}
           \item Consider predicate or negation depending on current valuation
         \end{enumerate}
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Branching - Non-determinism}
+  \begin{frame}{Method Call Boundaries}
+    \begin{columns}[T]
+      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
+        \lstinputlisting[language=Java]{method1.java}
+      \end{column}
+      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
+        \lstinputlisting[language=Java]{method2.java}
+      \end{column}
+    \end{columns}
+    \begin{itemize}
+      \item Arguments of reference type
+      \item Static fields
+      \item Different sets of local variables
+      \item Return values
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}
+    \begin{center}
+      \Huge Implementation
+    \end{center}
+  \end{frame}
+
+  \begin{frame}{Implementation}
+    \begin{itemize}
+      \item Bytecode factory
+        \begin{itemize}
+          \item ...
+        \end{itemize}
+      \item Attributes
+      \item \url{https://bitbucket.org/jd823592/jpf-abstraction}
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Branching -- Non-determinism}
     \begin{itemize}
       \item Control-flow determined by SMT based on known truth values
         \begin{center}
@@ -305,46 +343,41 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}{Future Work - State Matching}
-    \begin{columns}[c]
-      \begin{column}{0.6\textwidth}
+  \begin{frame}{Future Work}
+    \begin{itemize}
+      \item State matching
         \begin{itemize}
           \item Equal program counters
-          \item Subsumption
+          \item Abstract subsumption
+            %\begin{itemize}
+            %  \item \(\text{s}_\text{j} \le \text{s}_\text{i} \Leftrightarrow \text{"}\text{s}_\text{j} \rightarrow \text{s}_\text{i}\text{"}\) \\
+            %  \item e.g.
+            %    \begin{itemize}
+            %      \item ({\tt a = 1}) \(\le\) ({\tt a > 0})
+            %      \item ({\tt a = 1}) \(\le\) ({\tt a \(\text{=}^\text{\tiny unknown}\) 1}) 
+            %    \end{itemize}
+            %\end{itemize}
+        \end{itemize}
+      \item Predicate learning
+        \begin{itemize}
+          \item Current state
             \begin{itemize}
-              \item \(\text{s}_\text{j} \le \text{s}_\text{i} \Leftrightarrow \text{"}\text{s}_\text{j} \rightarrow \text{s}_\text{i}\text{"}\) \\
-              \item e.g.
-                \begin{itemize}
-                  \item ({\tt a = 1}) \(\le\) ({\tt a > 0})
-                  \item ({\tt a = 1}) \(\le\) ({\tt a \(\text{=}^\text{\tiny unknown}\) 1}) 
-                \end{itemize}
+              \item User-defined predicates
+              \item Branching conditions
+            \end{itemize}
+          \item {\bf C}ounter{\bf e}xample-{\bf G}uided {\bf A}bstraction {\bf R}efinement (CEGAR)
+            \begin{itemize}
+              \item Error trace analysis
+              \item Static analysis
+              \item Heuristics backed by experiments
             \end{itemize}
         \end{itemize}
-      \end{column}
-      \begin{column}{0.4\textwidth}
-        \invisible{\includegraphics<1>[height=6cm,keepaspectratio]{slides19}} % reserve space
-        \includegraphics<2>[height=6cm,keepaspectratio]{slides19}
-        \includegraphics<3>[height=6cm,keepaspectratio]{slides20}
-        \includegraphics<4>[height=6cm,keepaspectratio]{slides21}
-        \includegraphics<5>[height=6cm,keepaspectratio]{slides22}
-        \includegraphics<6>[height=6cm,keepaspectratio]{slides23}
-      \end{column}
-    \end{columns}
-  \end{frame}
-
-  \begin{frame}{Future Work - Predicate Learning}
-    \begin{itemize}
-      \item Current state
-        \begin{itemize}
-          \item User-defined predicates
-          \item Branching conditions
-        \end{itemize}
-      \item {\bf C}ounter{\bf e}xample-{\bf G}uided {\bf A}bstraction {\bf R}efinement (CEGAR)
-        \begin{itemize}
-          \item Error trace analysis
-          \item Static analysis
-          \item Heuristics backed by experiments
-        \end{itemize}
     \end{itemize}
+    %\invisible{\includegraphics<1>[height=6cm,keepaspectratio]{slides19}} % reserve space
+    %\includegraphics<2>[height=6cm,keepaspectratio]{slides19}
+    %\includegraphics<3>[height=6cm,keepaspectratio]{slides20}
+    %\includegraphics<4>[height=6cm,keepaspectratio]{slides21}
+    %\includegraphics<5>[height=6cm,keepaspectratio]{slides22}
+    %\includegraphics<6>[height=6cm,keepaspectratio]{slides23}
   \end{frame}
 \end{document}

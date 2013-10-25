@@ -1,8 +1,8 @@
 arg > 0
 
 fread(size, this) > 0
-fread(size, this) = arg
+fread(size, this) = arg + 1
 
-alength(arrlen, fread(buf, this)) = arg
+alength(arrlen, fread(buf, this)) = arg + 1
 
 sfread(SIZE, cz.cuni.mff.d3s.Example) > 0
