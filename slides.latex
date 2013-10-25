@@ -185,12 +185,12 @@
 
   \begin{frame}{Affected Predicates -- Symbol Aliasing -- Arrays}
     \begin{columns}[c]
-      \begin{column}{0.3\textwidth}
+      \begin{column}{\dimexpr 0.3\textwidth - 0.3em\relax}
         \begin{block}{Statement}
           \lstinputlisting[language=Java]{alias3.java}
         \end{block}
       \end{column}
-      \begin{column}{0.7\textwidth}
+      \begin{column}{\dimexpr 0.7\textwidth - 0.7em\relax}
         \begin{itemize}
           \item What array element is selected?
             \begin{itemize}
@@ -277,21 +277,23 @@
   \end{frame}
 
   \begin{frame}{Determining Predicates}
-    Suppose predicate \(p\)
     \vspace{1em}
     \begin{itemize}
-      \item Set of predicates \(D\) affecting valuation of the predicate \(p\)
+      \item Set of predicates affecting valuation of a given predicate
         \begin{itemize}
           %\item Restrict models of given predicate
           \item Overapproximated by shared symbols (e.g. {\tt x.f[0]})
         \end{itemize}
-      \item Used to determine predicate value
+        \vspace{1em}
         \begin{enumerate}
-          \item Transitive closure of determining predicates
+          \item Transitive closure construction
             \begin{itemize}
               \item e.g. {\tt \begin{tabular}{ccccc}a \(\overset{\text{?}}{\text{=}}\) 3 & \(\rightarrow\) & a = b & \(\rightarrow\) & b = 3 \end{tabular}}
             \end{itemize}
           \item Consider predicate or negation depending on current valuation
+            \begin{itemize}
+              \item e.g. {\tt (a = b) \(\wedge\) \(\neg\)(b = 3)\only<2>{ \(\Rightarrow\) \(\neg\)(a = 3)}}
+            \end{itemize}
         \end{enumerate}
     \end{itemize}
   \end{frame}
