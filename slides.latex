@@ -371,9 +371,9 @@
           \item {\bf C}ounter{\bf e}xample-{\bf G}uided {\bf A}bstraction {\bf R}efinement (CEGAR)
             \begin{itemize}
               \item Error trace analysis
-              \item Static analysis
               \item Heuristics backed by experiments
             \end{itemize}
+          \item Static analysis
         \end{itemize}
     \end{itemize}
     %\invisible{\includegraphics<1>[height=6cm,keepaspectratio]{slides19}} % reserve space
