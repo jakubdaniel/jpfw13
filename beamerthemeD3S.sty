@@ -69,7 +69,7 @@
 \setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Item}}
 \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}
 \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}
-\setbeamertemplate{enumerate item}{\hbox to 0.25cm{\fontsize{8}{8}\fontseries{bx}\selectfont \insertenumlabel .}}
+\setbeamertemplate{enumerate item}{\hbox to 0.25cm{\fontsize{8}{1em}\fontseries{bx}\selectfont \insertenumlabel .}}
 
 \setbeamersize{text margin left=1.5em,text margin right=1.5em}
 
@@ -102,12 +102,12 @@
 
 \setbeamertemplate{title page}{%
   \vbox to 1.5cm {%
-    \shadowoffset{0.75pt}\shadowtext{\parbox{\textwidth}{\centering \bf \fontsize{24}{24}\selectfont \inserttitle}}%
+    \shadowoffset{0.75pt}\shadowtext{\parbox{\textwidth}{\centering \bf \fontsize{24}{1em}\selectfont \inserttitle}}%
   }%
   \vspace{2em}%
   \colorbox{gray}{%
     \makebox[\textwidth][l]{%
-      \bf \fontsize{6}{6}\selectfont \color{white} http://d3s.mff.cuni.cz%
+      \bf \fontsize{6}{1em}\selectfont \color{white} http://d3s.mff.cuni.cz%
     }%
   }%
   \begin{columns}[b]%
@@ -116,8 +116,8 @@
       \vspace{0.25cm}%
       \hspace{1cm} \includegraphics[width=2cm,keepaspectratio]{CUNI} \\%
       \vskip-1ex%
-      \makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{6}\selectfont \color{gray} CHARLES UNIVERSITY IN PRAGUE} \\%
-      \colorbox{gray}{\makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{6}\selectfont \color{white} faculty of mathematics and physics}} \\%
+      \makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{1em}\selectfont \color{gray} CHARLES UNIVERSITY IN PRAGUE} \\%
+      \colorbox{gray}{\makebox[4cm][c]{\bf \fontfamily{ppl}\fontsize{6}{1em}\selectfont \color{white} faculty of mathematics and physics}} \\%
     \end{column}%
     \begin{column}[T]{\dimexpr 0.5\textwidth - 0.75cm\relax}%
       \raggedleft \it%
@@ -128,7 +128,7 @@
 
 \setbeamertemplate{frametitle}{%
   \vspace{-1cm}%
-  \fontsize{16}{16}\selectfont%
+  \fontsize{16}{1em}\selectfont%
   \shadowoffset{0.75pt}%
   \hskip-\beamer@leftmargin%
   \hskip0.25cm%
@@ -141,8 +141,8 @@
 }
 
 \setbeamertemplate{footline}{%
-  {%
-    \colorbox{gray!50}{%
+  \colorbox{gray!50}{%
+    \vbox to 0.8em {%
       \makebox[\paperwidth][c]{%
         \expandafter\if\csname beamer@D3S@footlineauthor \endcsname1%
           \scalebox{0.6}{{\bf \insertauthor}, }%
