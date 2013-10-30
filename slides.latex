@@ -78,11 +78,7 @@
     \end{itemize}
   \end{frame}
 
-  \begin{frame}
-    \begin{center}
-      \Huge Predicate Language
-    \end{center}
-  \end{frame}
+  \subtitleframe{Predicate Language}
 
   \begin{frame}{Predicate Language}
     \begin{columns}[c]
@@ -108,11 +104,7 @@
     %\end{center}
   \end{frame}
 
-  \begin{frame}
-    \begin{center}
-      \Huge Symbolic Execution
-    \end{center}
-  \end{frame}
+  \subtitleframe{Symbolic Execution}
 
   \begin{frame}{Symbolic Execution}
     Suppose a predicate {\tt c = 3}\\
@@ -146,11 +138,7 @@
     \end{columns}
   \end{frame}
 
-  \begin{frame}
-    \begin{center}
-      \Huge Predicate Value Inference
-    \end{center}
-  \end{frame}
+  \subtitleframe{Predicate Value Inference}
 
   \begin{frame}{Affected Predicates -- Symbol Aliasing}
     \begin{itemize}
@@ -299,35 +287,48 @@
   \end{frame}
 
   \begin{frame}{Method Call Boundaries}
-    \begin{columns}[T]
-      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
-        \lstinputlisting[language=Java]{method1.java}
-      \end{column}
-      \begin{column}{\dimexpr 0.5\textwidth - 0.5cm\relax}
-        \lstinputlisting[language=Java]{method2.java}
-      \end{column}
-    \end{columns}
     \begin{itemize}
       \item Arguments of reference type
       \item Static fields
-      \item Different sets of local variables
+      \item Different local variables
       \item Return values
     \end{itemize}
+    \vskip-0.25cm
+    \begin{columns}[T]
+      \begin{column}{\dimexpr 0.4\textwidth - 1cm\relax}
+        \lstinputlisting[basicstyle=\tiny\tt,language=Java]{method1.java}
+      \end{column}
+      \begin{column}{\dimexpr 0.6\textwidth - 1cm\relax}
+        \lstinputlisting[basicstyle=\tiny\tt,morekeywords={fread,sfread,aread,arr,alength,arrlen},escapechar=`]{method1.pred}
+      \end{column}
+    \end{columns}
+    \vspace{0.0625cm}
+    {\color{gray!25} \hrule}
+    \vspace{0.25cm}
+    \begin{columns}[T]
+      \begin{column}{\dimexpr 0.4\textwidth - 1cm\relax}
+        \lstinputlisting[basicstyle=\tiny\tt,language=Java]{method2.java}
+      \end{column}
+      \begin{column}{\dimexpr 0.6\textwidth - 1cm\relax}
+        \lstinputlisting[basicstyle=\tiny\tt,morekeywords={fread,sfread,aread,arr,alength,arrlen}]{method2.pred}
+      \end{column}
+    \end{columns}
   \end{frame}
 
-  \begin{frame}
-    \begin{center}
-      \Huge Implementation
-    \end{center}
-  \end{frame}
+  \subtitleframe{Implementation}
 
   \begin{frame}{Implementation}
     \begin{itemize}
       \item Bytecode factory
-        \begin{itemize}
-          \item ...
-        \end{itemize}
       \item Attributes
+        \begin{itemize}
+          \item Symbolic values
+
+        \end{itemize}
+      \item Listeners
+        \begin{itemize}
+          \item Backtracking
+        \end{itemize}
       \item \url{https://bitbucket.org/jd823592/jpf-abstraction}
     \end{itemize}
   \end{frame}

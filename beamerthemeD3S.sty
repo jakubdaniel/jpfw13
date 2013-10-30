@@ -83,6 +83,15 @@
     \frame{\titlepage}%
   }%
 }
+\def\subtitleframe#1{%
+  \addtocounter{framenumber}{-1}%
+  {%
+    \setbeamertemplate{headline}{}%
+    \setbeamertemplate{frametitle}{}%
+    \setbeamertemplate{footline}{}%
+    \frame{\begin{center}\Huge #1\end{center}}%
+  }%
+}
 
 \setbeamertemplate{background canvas}{%
   \vbox to \dimexpr\paperheight - 1em\relax {%
