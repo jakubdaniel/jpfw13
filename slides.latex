@@ -12,18 +12,21 @@
 \begin{document}
   \titleframe
 
-  \begin{frame}{State Space Traversal}
-  \end{frame}
+%  \begin{frame}{State Space Traversal}
+%    \begin{itemize}
+%      \item 
+%    \end{itemize}
+%  \end{frame}
 
-  \begin{frame}{Predicate Abstraction}
-    \begin{itemize}
-      \item Finite set of predicates over program variables \(\rightarrow\) finite state space
-      \item State space reduction
-    \end{itemize}
-    \begin{center}
-      \includegraphics{slides1}
-    \end{center}
-  \end{frame}
+%  \begin{frame}{Predicate Abstraction}
+%    \begin{itemize}
+%      \item Finite set of predicates over program variables \(\rightarrow\) finite state space
+%      \item State space reduction
+%    \end{itemize}
+%    \begin{center}
+%      \includegraphics{slides1}
+%    \end{center}
+%  \end{frame}
 
 %  \begin{frame}{Predicate Abstraction}
 %    \begin{columns}[c]
