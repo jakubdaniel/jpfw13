@@ -598,8 +598,9 @@ beginfig(24)
   draw node(( 1u, -2u), btex etex, darkblue, blue);
   draw node(( 3u, -2u), btex etex, darkblue, blue);
 
-  drawarrow ( 4u, 0.5u)--( 4u, -2.5u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
-  label.rt(btex \bf Potentially infinite etex rotated -90, ( 4u,  -1u)) withcolor darkblue;
+  %drawarrow ( 5u, 0.5u)--( 5u, -2.5u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
+  %label.rt(btex \(\infty\) etex scaled 3, ( 5u,  -1u)) withcolor darkblue;
+  %label.rt(btex \bf Potentially infinite etex rotated -90, ( 5u,  -1u)) withcolor darkblue;
 endfig;
 
 end

@@ -14,7 +14,7 @@
   \note{GSoC Project}
 
   \begin{frame}{State Space Traversal}
-    \note{When we are interested in verifying an absence of errors in a program}
+    \note[item]{We are interested in verifying an absence of errors in a program}
     \begin{itemize}
       \item Concrete program state encodes
         \begin{itemize}
@@ -23,6 +23,8 @@
           \item Heap
         \end{itemize}
       \item State space explosion
+        \note[item]{Large domains, thread scheduling}
+        \note[item]{Potentially infinite due to recursion and data domains}
     \end{itemize}
     \begin{center}
       \includegraphics{slides24}
@@ -30,8 +32,11 @@
   \end{frame}
 
   \begin{frame}{Predicate Abstraction}
+    \note[item]{\(\ldots\) is an approach dealing with the size of the statespace}
     \begin{itemize}
       \item Finite set of predicates over program variables \(\rightarrow\) finite state space
+        \note[item]{The idea is to restrain to finit state space}
+        \note[item]{Abstraction maps sets of original states to new abstract states}
       \item State space reduction
     \end{itemize}
     \begin{center}

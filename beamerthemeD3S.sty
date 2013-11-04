@@ -62,6 +62,33 @@
   }%  
 }
 
+\def\beamer@setupnote{%
+  \gdef\beamer@notesactions{%
+    \beamer@outsideframenote{%
+      \beamer@atbeginnote%
+      \beamer@notes%
+      \vbox{%
+        \begin{center}%
+          \insertslideintonotes{0.5}%
+        \end{center}%
+        \ifx\beamer@noteitems%
+          \@empty%
+        \else%
+          \setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Item}}%
+          \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}%
+          \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}%
+          \begin{itemize}%
+            %\itemsep=0pt\parskip=0pt%
+            \beamer@noteitems%
+          \end{itemize}%
+        \fi%
+      }%
+      \beamer@atendnote%
+    }%
+    \gdef\beamer@notesactions{}%
+  }%
+}%
+
 \setbeamercolor{note page}{fg=gray}
 \setbeamercolor{frametitle}{fg=black}
 \setbeamercolor{block title}{fg=black}
@@ -71,7 +98,11 @@
 \setbeamercolor{enumerate subitem}{fg=black}
 \setbeamercolor{enumerate subsubitem}{fg=black}
 
-\setbeamertemplate{note page}[plain]
+\setbeamertemplate{note page}{%
+  \insertnote%
+}
+
+\setbeamertemplate{note page item}{\includegraphics[width=1ex,keepaspectratio]{Item}}
 \setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Item}}
 \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}
 \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}
