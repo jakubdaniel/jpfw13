@@ -70,6 +70,8 @@
 %  \end{frame}
 
   \begin{frame}{Project Goals}
+    \note[item]{The main goal of the project was to design and implement \(\ldots\)}
+    \note[item]{\(\ldots\) where Java Pathfinder is a verification tool. Basically it is \(\ldots\)}
     \begin{itemize}
       \item Predicate abstraction for Java Pathfinder
       \item Java Pathfinder
@@ -86,6 +88,7 @@
   \end{frame}
 
   \begin{frame}{Challenges}
+    \note[item]{We have identified several challenges, namely \(\ldots\)}
     \begin{itemize}
       \item Predicate language
       \item Symbolic bytecode interpretation
@@ -103,13 +106,13 @@
     \begin{columns}[c]
       \begin{column}{0.5\textwidth}
         \begin{itemize}
+          \item {\tt =, <, >, <=, >=}
+          \item {\tt +, -, *, /}
           \item {\tt fread(f, o)}
           \item {\tt sfread(f, c)}
           \item {\tt aread(arr, a, expr)}
           \item {\tt alength(arrlen, a)}
-          \item {\tt +, -, *, /}
-          \item {\tt =, <, >, <=, >=}
-          \item {\tt return}
+          %\item {\tt return}
         \end{itemize}
       \end{column}
       \begin{column}{0.5\textwidth}
@@ -214,13 +217,14 @@
  
   \begin{frame}{Affected Predicates}
     \begin{itemize}
-      \item Predicates referring to old concrete values
+      \itemsep=1em
+      \item Ideal: predicates referring to old concrete values
         \begin{itemize}
-          \item Potentially
+          \item Hard to get (aliasing, arrays)
         \end{itemize}
-      \item Occurrence of overwritten variables
+      \item Solution: occurrence of overwritten variables
         \begin{itemize}
-          \item Aliasing
+          \item Overapproximation due to aliasing
         \end{itemize}
       \item Other predicates keep their value
         %\begin{itemize}
@@ -306,18 +310,23 @@
   \end{frame}
 
   \begin{frame}{Method Call Boundaries}
-    \begin{itemize}
-      \item Arguments of reference type
-      \item Static fields
-      \item Different local variables
-      \item Return values
-    \end{itemize}
-    \vskip-0.25cm
     \begin{columns}[T]
-      \begin{column}{\dimexpr 0.4\textwidth - 1cm\relax}
+      \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
+        \begin{itemize}
+          \itemindent=-2em
+          \item Arguments of reference type
+          \item Static fields
+        \end{itemize}
+        \vspace{2em}
         \lstinputlisting[basicstyle=\tiny\tt,language=Java]{method1.java}
       \end{column}
-      \begin{column}{\dimexpr 0.6\textwidth - 1cm\relax}
+      \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
+        \begin{itemize}
+          \itemindent=-2em
+          \item Different local variables
+          \item Return values
+        \end{itemize}
+        \vspace{2em}
         \lstinputlisting[basicstyle=\tiny\tt,morekeywords={fread,sfread,aread,arr,alength,arrlen},escapechar=`]{method1.pred}
       \end{column}
     \end{columns}
@@ -325,10 +334,10 @@
     {\color{gray!25} \hrule}
     \vspace{0.25cm}
     \begin{columns}[T]
-      \begin{column}{\dimexpr 0.4\textwidth - 1cm\relax}
+      \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
         \lstinputlisting[basicstyle=\tiny\tt,language=Java]{method2.java}
       \end{column}
-      \begin{column}{\dimexpr 0.6\textwidth - 1cm\relax}
+      \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
         \lstinputlisting[basicstyle=\tiny\tt,morekeywords={fread,sfread,aread,arr,alength,arrlen}]{method2.pred}
       \end{column}
     \end{columns}
@@ -354,11 +363,13 @@
 
   \begin{frame}{Branching -- Non-determinism}
     \begin{itemize}
+      \itemsep=2em
       \item Control-flow determined by SMT based on known truth values
         \begin{center}
           \begin{minipage}{6.5cm}
             \lstinputlisting[language=Java]{branching.java}
           \end{minipage}
+          \vspace{1em}
           \includegraphics{slides4}
         \end{center}
       \item Learning branching condition predicate

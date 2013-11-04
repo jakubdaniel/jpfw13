@@ -587,8 +587,8 @@ beginfig(24)
   draw nonedge(( 1u, -2u), ( 0u, -3u), btex etex, darkblue);
   draw nonedge(( 1u, -2u), ( 2u, -3u), btex etex, darkblue);
 
-  draw nonedge(( 3u, -2u), ( 2u, -3u), btex etex, darkblue);
-  draw nonedge(( 3u, -2u), ( 4u, -3u), btex etex, darkblue);
+  %draw nonedge(( 3u, -2u), ( 2u, -3u), btex etex, darkblue);
+  %draw nonedge(( 3u, -2u), ( 4u, -3u), btex etex, darkblue);
 
   draw node(( 0u,  0u), btex etex, darkblue, blue);
   draw node((-2u, -1u), btex etex, darkblue, blue);
@@ -596,7 +596,7 @@ beginfig(24)
   draw node((-3u, -2u), btex etex, darkblue, blue);
   draw node((-1u, -2u), btex etex, darkblue, blue);
   draw node(( 1u, -2u), btex etex, darkblue, blue);
-  draw node(( 3u, -2u), btex etex, darkblue, blue);
+  draw node(( 3u, -2u), btex etex, darkred,  red);
 
   %drawarrow ( 5u, 0.5u)--( 5u, -2.5u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
   %label.rt(btex \(\infty\) etex scaled 3, ( 5u,  -1u)) withcolor darkblue;
