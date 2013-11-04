@@ -130,6 +130,7 @@
     \frame{\titlepage}%
   }%
 }
+
 \def\subtitleframe#1{%
   \addtocounter{framenumber}{-1}%
   {%
@@ -188,8 +189,11 @@
 }
 
 \setbeamertemplate{footline}{%
+  \fboxsep=0pt%
   \colorbox{gray!50}{%
-    \vbox to 2pt {%
+    \vbox to 8pt {%
+      \vfill%
+      \vspace{0.2em}%
       \makebox[\paperwidth][c]{%
         \expandafter\if\csname beamer@D3S@footlineauthor \endcsname1%
           \scalebox{0.6}{{\bf \insertauthor}, }%
@@ -201,6 +205,7 @@
         \hbox to 1cm {\hfill  \scalebox{0.6}{\insertframenumber}}%
         \hspace{1em}%
       }%
+      \vfill%
     }%
   }%
 }
