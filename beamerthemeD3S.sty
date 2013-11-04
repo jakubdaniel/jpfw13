@@ -62,6 +62,17 @@
   }%  
 }
 
+\renewcommand{\insertslideintonotes}[1]{%
+  {%
+    \begin{pgfpicture}{0cm}{0cm}{#1\paperwidth}{#1\paperheight}%
+      \begin{pgflowlevelscope}{\pgftransformscale{#1}}%
+        \color{black}%
+        {\pgftransformshift{\pgfpoint{\beamer@origlmargin}{\footheight}}\pgftext[left,bottom]{\copy\beamer@frameboxcopy}}%
+      \end{pgflowlevelscope}%
+    \end{pgfpicture}%
+  }%
+}
+
 \def\beamer@setupnote{%
   \gdef\beamer@notesactions{%
     \beamer@outsideframenote{%

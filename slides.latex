@@ -35,7 +35,7 @@
     \note[item]{\(\ldots\) is an approach dealing with the size of the statespace}
     \begin{itemize}
       \item Finite set of predicates over program variables \(\rightarrow\) finite state space
-        \note[item]{The idea is to restrain to finit state space}
+        \note[item]{The idea is to restrain to finite state space}
         \note[item]{Abstraction maps sets of original states to new abstract states}
       \item State space reduction
     \end{itemize}
