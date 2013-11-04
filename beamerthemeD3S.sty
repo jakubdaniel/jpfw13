@@ -7,6 +7,10 @@
 \ExecuteOptionsBeamer{event=D3S Seminar}
 \ProcessOptionsBeamer
 
+\usepackage{pgfpages}
+\setbeameroption{show notes}
+\setbeameroption{show notes on second screen=right}
+
 \beamertemplatenavigationsymbolsempty
 
 \usepackage[english]{babel}
@@ -66,6 +70,7 @@
 \setbeamercolor{enumerate subitem}{fg=black}
 \setbeamercolor{enumerate subsubitem}{fg=black}
 
+\setbeamertemplate{note page}[plain]
 \setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Item}}
 \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}
 \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}
