@@ -570,6 +570,38 @@ beginfig(23)
   setbounds currentpicture to bbox explv;
 endfig;
 
+beginfig(24)
+  draw edge(( 0u,  0u), (-2u, -1u), btex etex, darkblue);
+  draw edge(( 0u,  0u), ( 2u, -1u), btex etex, darkblue);
+  draw edge((-2u, -1u), (-3u, -2u), btex etex, darkblue);
+  draw edge((-2u, -1u), (-1u, -2u), btex etex, darkblue);
+  draw edge(( 2u, -1u), ( 1u, -2u), btex etex, darkblue);
+  draw edge(( 2u, -1u), ( 3u, -2u), btex etex, darkblue);
+
+  draw nonedge((-3u, -2u), (-4u, -3u), btex etex, darkblue);
+  draw nonedge((-3u, -2u), (-2u, -3u), btex etex, darkblue);
+
+  draw nonedge((-1u, -2u), (-2u, -3u), btex etex, darkblue);
+  draw nonedge((-1u, -2u), ( 0u, -3u), btex etex, darkblue);
+
+  draw nonedge(( 1u, -2u), ( 0u, -3u), btex etex, darkblue);
+  draw nonedge(( 1u, -2u), ( 2u, -3u), btex etex, darkblue);
+
+  draw nonedge(( 3u, -2u), ( 2u, -3u), btex etex, darkblue);
+  draw nonedge(( 3u, -2u), ( 4u, -3u), btex etex, darkblue);
+
+  draw node(( 0u,  0u), btex etex, darkblue, blue);
+  draw node((-2u, -1u), btex etex, darkblue, blue);
+  draw node(( 2u, -1u), btex etex, darkblue, blue);
+  draw node((-3u, -2u), btex etex, darkblue, blue);
+  draw node((-1u, -2u), btex etex, darkblue, blue);
+  draw node(( 1u, -2u), btex etex, darkblue, blue);
+  draw node(( 3u, -2u), btex etex, darkblue, blue);
+
+  drawarrow ( 4u, 0.5u)--( 4u, -2.5u) withpen pencircle scaled 1.5 withcolor darkblue dashed evenly;
+  label.rt(btex \bf Potentially infinite etex rotated -90, ( 4u,  -1u)) withcolor darkblue;
+endfig;
+
 end
 
 verbatimtex

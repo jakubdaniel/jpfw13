@@ -11,12 +11,22 @@
 
 \begin{document}
   \titleframe
+  \note{GSoC Project}
 
   \begin{frame}{State Space Traversal}
+    \note{When we are interested in verifying an absence of errors in a program}
     \begin{itemize}
-      \item
-        \note[item]{When we are interested in verifying an absence of errors in a program}
+      \item Concrete program state encodes
+        \begin{itemize}
+          \item Program counter
+          \item Stack
+          \item Heap
+        \end{itemize}
+      \item State space explosion
     \end{itemize}
+    \begin{center}
+      \includegraphics{slides24}
+    \end{center}
   \end{frame}
 
   \begin{frame}{Predicate Abstraction}
