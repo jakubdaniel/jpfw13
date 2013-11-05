@@ -11,7 +11,7 @@
 
 \begin{document}
   \titleframe
-  \note{GSoC Project}
+  \note{\vbox to \vsize {\vfill\hbox to \hsize {\hfill This year's Google Summer of Code project \hfill} \vfill}}
 
   \begin{frame}{State Space Traversal}
     \note[item]{We are interested in verifying an absence of errors in a program}
@@ -107,7 +107,11 @@
       \begin{column}{0.5\textwidth}
         \begin{itemize}
           \item {\tt =, <, >, <=, >=}
+            \note[item]{For us predicates are always equalities and inequalities \(\ldots\)}
           \item {\tt +, -, *, /}
+            \note[item]{\(\ldots\) of basic arithmetic expressions over variables and \(\ldots\)}
+            \note[item]{instance fields, static fields, array elements, and lengths of arrays.}
+            \note[item]{For that our predicate language defines uninterpreted functions with intuitive semantics.}
           \item {\tt fread(f, o)}
           \item {\tt sfread(f, c)}
           \item {\tt aread(arr, a, expr)}
@@ -127,6 +131,7 @@
   \end{frame}
 
   \subtitleframe{Symbolic Execution}
+  \note{\vbox to \vsize {\vfill \hbox to \hsize {\hfill \vbox{To be able to identify effects of the program statements on the predicates forming the abstraction, we need to perform a symbolic execution \(\ldots\)} \hfill} \vfill}}
 
   \begin{frame}{Symbolic Execution}
     Suppose a predicate {\tt c = 3}\\
@@ -135,6 +140,7 @@
         \vfill
         \uncover<6>{
           \Large\tt c = 3 \(\Leftrightarrow\) a + b = 3
+          \note<6>[item]{To illustrate the information we obtain from symbolic execution \(\ldots\)}
         }
         \vfill
       }
@@ -163,10 +169,14 @@
   \subtitleframe{Predicate Value Inference}
 
   \begin{frame}{Affected Predicates -- Symbol Aliasing}
+    \note[item]{Suppose the statement on the right, which of the predicates on the left may need updating? Hard to decide without additional information}
     \begin{itemize}
       \item Detecting impact of bytecode instructions
         \vbox{
           \uncover<2>{
+            \note<2>[item]{Suppose the statement followed after this portion of code}
+            \note<2>[item]{The symbolic access paths in all the predicates refer in fact to the same piece of data \(\rightarrow\) all predicates are affected}
+            \note<2>[item]{Therefore we maintain this graph - memory model}
             \vspace{0.25cm}
             \begin{columns}[T]
               \begin{column}{0.5\textwidth}
@@ -194,6 +204,10 @@
   \end{frame}
 
   \begin{frame}{Affected Predicates -- Symbol Aliasing -- Arrays}
+    \note[item]{But maintaining the graph over all statements is tricky - mainly due to arrays}
+    \note[item]{Suppose we want to update the graph after the statement}
+    \note[item]{We do not know the exact value of the index}
+    \note[item]<2>{\(\ldots\) so we need to overapproximate}
     \begin{columns}[c]
       \begin{column}{\dimexpr 0.3\textwidth - 0.3em\relax}
         \begin{block}{Statement}
