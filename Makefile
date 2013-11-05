@@ -1,3 +1,5 @@
+SCREENA=LVDS2
+SCREENB=VGA2
 PX=1152
 NX=1152
 Y=864
@@ -9,5 +11,5 @@ slides.pdf: %.pdf: %.latex %.mp beamerthemeD3S.sty
 	pdflatex $*.latex
 
 present: all
-	xrandr --output LVDS2 --mode $(PX)x$(Y) --pos $(NX)x0 --output VGA2 --mode $(NX)x$(Y) --pos 0x0
+	xrandr --output $(SCREENA) --mode $(PX)x$(Y) --pos $(NX)x0 --output $(SCREENB) --mode $(NX)x$(Y) --pos 0x0
 	impressive -g `expr $(PX) + $(NX)`x$(Y) -T 0 slides.pdf
