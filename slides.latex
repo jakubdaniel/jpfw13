@@ -230,13 +230,17 @@
   \end{frame}
  
   \begin{frame}{Affected Predicates}
+    \note[item]{Now we would like to lift the notion of affected symbols to predicates, to detect what needs to be updated}
+    \note[item]{To be precise we need to decide exactly what predicates are outdated}
+    \note[item]{Due to overapproximating the aliasing relation we cannot miss any outdated symbol, but we may consider some symbols overwritten even though they are not}
+    \note[item]{All predicates that do not contain such symbols do not need reevaluation}
     \begin{itemize}
       \itemsep=1em
       \item Ideal: predicates referring to old concrete values
         \begin{itemize}
           \item Hard to get (aliasing, arrays)
         \end{itemize}
-      \item Solution: occurrence of overwritten variables
+      \item Solution: occurrence of potentially overwritten variables
         \begin{itemize}
           \item Overapproximation due to aliasing
         \end{itemize}
@@ -248,8 +252,10 @@
   \end{frame}
 
   \begin{frame}{Predicate Value Inference}
+    \note[item]{After selecting predicates that need to be updated we invoke the valuation process itself}
     \begin{itemize}
       \item Using {\bf S}atisfiability {\bf M}odulo {\bf T}heory solver (SMT)
+        \note[item]{It is based on a call to an SMT with support for array theory that our field and element access are modeled on top of}
         \begin{center}
           {\tt
             \begin{tabular}{p{1cm}cp{0.5cm}lcp{0.5cm}l}
@@ -259,16 +265,19 @@
           }
         \end{center}
       \item Distinguished predicate values:
+        \note[item]{Each predicate is assigned a truth value, either true if it necessarily holds after the given statement, false if it neessarily does not hold, unknown in cases when both possibilities may apply}
         \begin{itemize}
           \item {\tt true}
           \item {\tt false}
           \item {\tt unknown}
         \end{itemize}
       \item Predicate values determined using \emph{weakest preconditions}
+        \note[item]{To infer the valuation we use the approach of weakest preconditions}
     \end{itemize}
   \end{frame}
 
   \begin{frame}{Weakest Preconditions}
+    \note[item]{Weakest precondition for a predicate and a statement is a formula that needs to necessarily hold before the statement is executed in order to ensure that the predicate will hold after the statement is executed}
     \begin{itemize}
       \item Applied to cope with statements modifying data
       \item Recursive construction
@@ -302,7 +311,6 @@
   \end{frame}
 
   \begin{frame}{Determining Predicates}
-    \vspace{1em}
     \begin{itemize}
       \item Set of predicates affecting valuation of a given predicate
         \begin{itemize}
@@ -331,8 +339,6 @@
           \item Arguments of reference type
           \item Static fields
         \end{itemize}
-        \vspace{2em}
-        \lstinputlisting[basicstyle=\tiny\tt,language=Java]{method1.java}
       \end{column}
       \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
         \begin{itemize}
@@ -340,7 +346,14 @@
           \item Different local variables
           \item Return values
         \end{itemize}
-        \vspace{2em}
+      \end{column}
+    \end{columns}
+    \vspace{2em}
+    \begin{columns}[T]
+      \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
+        \lstinputlisting[basicstyle=\tiny\tt,language=Java]{method1.java}
+      \end{column}
+      \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
         \lstinputlisting[basicstyle=\tiny\tt,morekeywords={fread,sfread,aread,arr,alength,arrlen},escapechar=`]{method1.pred}
       \end{column}
     \end{columns}
