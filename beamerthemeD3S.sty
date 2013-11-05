@@ -184,8 +184,13 @@
 }
 
 \setbeamertemplate{headline}{%
-  \vspace{1cm}%
-  \includegraphics[width=\paperwidth]{Head}%
+  {%
+    \pgfdeclarehorizontalshading{beamer@D3S@headlineshading}{1cm}{color(0cm)=(white); color(\paperwidth)=(gray!25)}%
+    \vbox{%
+      \hbox{\pgfuseshading{beamer@D3S@headlineshading}}%
+      \includegraphics[width=\paperwidth]{Head}%
+    }%
+  }%
 }
 
 \setbeamertemplate{footline}{%
