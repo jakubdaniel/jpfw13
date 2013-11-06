@@ -384,22 +384,26 @@
   \subtitleframe{Implementation}
 
   \begin{frame}{Implementation}
+    \note[item]{During the project we implemented all the necessary mechanisms to support predicate abstraction in JPF via an extension}
     \begin{itemize}
       \item Bytecode factory
+        \note[item]{We used a custom bytecode factory and overridden instructions to perform the symbolic execution with individual symbols passed in JPF attributes}
       \item Attributes
         \begin{itemize}
           \item Symbolic values
-
         \end{itemize}
       \item Listeners
         \begin{itemize}
           \item Backtracking
         \end{itemize}
+        \note[item]{The rest of the infrastructure is being notified about important events by listeners (e.g. backtracking)}
       \item \url{https://bitbucket.org/jd823592/jpf-abstraction}
+        \note[item]{In case of interest, the code is accessible from its repository referred to by the URL}
     \end{itemize}
   \end{frame}
 
   \begin{frame}{Branching -- Non-determinism}
+    \note[item]{Now I would like briefly mention how we dealt with non-determinism upon branching}
     \begin{itemize}
       \itemsep=2em
       \item Control-flow determined by SMT based on known truth values
@@ -418,6 +422,7 @@
   \end{frame}
 
   \begin{frame}{Future Work}
+    \note[item]{To conclude \(\ldots\)}
     \begin{itemize}
       \item State matching
         \begin{itemize}
