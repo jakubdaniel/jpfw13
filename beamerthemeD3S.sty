@@ -78,9 +78,8 @@
       \beamer@atbeginnote%
       \beamer@notes%
       \vbox{%
-        \begin{center}%
-          \insertslideintonotes{0.5}%
-        \end{center}%
+        \advance \linewidth by -3em%
+        \hbox to \linewidth{\hfill  \insertslideintonotes{0.5} \hfill}%
         \ifx\beamer@noteitems%
           \@empty%
         \else%
@@ -88,7 +87,7 @@
           \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}%
           \setbeamertemplate{itemize subsubitem}{\includegraphics[width=1ex,keepaspectratio]{SubSubItem}}%
           \begin{itemize}%
-            %\itemsep=0pt\parskip=0pt%
+            \footnotesize%
             \beamer@noteitems%
           \end{itemize}%
         \fi%
