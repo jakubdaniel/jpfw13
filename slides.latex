@@ -277,18 +277,21 @@
   \end{frame}
 
   \begin{frame}{Weakest Preconditions}
-    \note[item]{Weakest precondition for a predicate and a statement is a formula that needs to necessarily hold before the statement is executed in order to ensure that the predicate will hold after the statement is executed}
+    \note<1>[item]{Weakest precondition for a predicate and a statement is a formula that needs to necessarily hold before the statement is executed in order to ensure that the predicate will hold after the statement is executed}
     \begin{itemize}
       \item Applied to cope with statements modifying data
       \item Recursive construction
+        \note<1>[item]{The construction of the weakest precondition starts with the original predicate and attempts to derive the final formula depending on the predicate structure and type of the statement}
         \begin{columns}[T]
           \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
             \begin{block}{Predicate}
+              \note<1>[item]{Here I will present an example. Let's start with a predicate given in our language and its parse tree}
               {\tt \only<1>{\color{gray}}x{\only<2>{\color{gray}}.f{\only<3>{\color{gray}}[0]{\only<4>{\color{gray}}.num{\only<5>{\color{gray}}{\only<6-7>{\color{gray}}\;=\;}y{\only<6>{\color{gray}}.num}}}}}}
             \end{block}
           \end{column}
           \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
             \begin{block}{Statement}
+              \note<8>[item]{Now I will illustrate what the weakest precondition will look like for a specific statement}
               {\only<1-8>{\color{gray}} \lstinline|x.f[i] = y;|}
             \end{block}
           \end{column}
@@ -305,17 +308,23 @@
         \includegraphics<7>  [height=4cm,keepaspectratio]{slides16}
         \includegraphics<8-9>[height=4cm,keepaspectratio]{slides17}
         \includegraphics<10->[height=4cm,keepaspectratio]{slides18}
+        \note<10->[item]{We can see, that the array element read has been adjusted to encode the effects of the assignment statement}
+        \note<10->[item]{The underlaying theorem prover can leverage the added information to decide the truth value of the predicate after the statement}
       }
       %\visible<11->{\tt \(\text{i = 0} \Rightarrow \text{x.f[0].num = y.num}\)}
     \end{center}
   \end{frame}
 
   \begin{frame}{Determining Predicates}
+    \note[item]<1>{Now that we have the weakest precondition, we need to decide whether the precondition holds in the current state}
+    \note[item]<1>{A naïve and most straightforward way would be to leverage all predicates in the current state}
+    \note[item]<1>{Most of the predicates may be unimportant for a particular valuation query}
     \begin{itemize}
       \item Set of predicates affecting valuation of a given predicate
         \begin{itemize}
           %\item Restrict models of given predicate
           \item Overapproximated by shared symbols (e.g. {\tt x.f[0]})
+          \note<1>[item]{The filtered set of predicates is potentially smaller and may lead to less time being spent in the theorem prover}
         \end{itemize}
         \vspace{1em}
         \begin{enumerate}
@@ -325,6 +334,7 @@
             \end{itemize}
           \item Consider predicate or negation depending on current valuation
             \begin{itemize}
+              \note<2>[item]{The complete predicate valuation query then considers positive and negative forms of individual determining predicates and tests whether it infers validity of the weakest precondition, for which we know that it implies the validity of the original predicate after the statement}
               \item e.g. {\tt (a = b) \(\wedge\) \(\neg\)(b = 3)\only<2>{ \(\Rightarrow\) \(\neg\)(a = 3)}}
             \end{itemize}
         \end{enumerate}
@@ -332,6 +342,7 @@
   \end{frame}
 
   \begin{frame}{Method Call Boundaries}
+    \note[item]{Apart from assignment statements, the predicate values depend on scope changes caused by calling and returning from methods}
     \begin{columns}[T]
       \begin{column}{\dimexpr 0.5\textwidth - 1cm\relax}
         \begin{itemize}
