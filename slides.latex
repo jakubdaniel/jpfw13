@@ -3,8 +3,15 @@
 \documentclass{beamer}
 
 %\usetheme[footlineauthor]{D3S}
-\usetheme[event={JPF Workshop}]{D3S}
 %\usetheme{D3S}
+
+\def\event{JPF Workshop}
+
+\ifdefined\withcomments
+  \usetheme[event=\event,comments]{D3S}
+\else
+  \usetheme[event=\event]{D3S}
+\fi
 
 \usepackage{multirow}
 

@@ -3,12 +3,16 @@
 \mode<all>
 
 \DeclareOptionBeamer{footlineauthor}{\expandafter\def\csname beamer@D3S@footlineauthor \endcsname{1}}
+\DeclareOptionBeamer{comments}{\expandafter\def\csname beamer@D3S@comments \endcsname{1}}
 \DeclareOptionBeamer{event}[true]{\expandafter\def\csname beamer@D3S@event \endcsname{#1}}
 \ExecuteOptionsBeamer{event=D3S Seminar}
 \ProcessOptionsBeamer
 
 \usepackage{pgfpages}
-\setbeameroption{show notes on second screen=right}
+
+\expandafter\if\csname beamer@D3S@comments \endcsname1
+  \setbeameroption{show notes on second screen=right}
+\fi
 
 \beamertemplatenavigationsymbolsempty
 
