@@ -84,8 +84,7 @@
       \vbox{%
         \advance \linewidth by -3em%
         \hbox to \linewidth{\hfill  \insertslideintonotes{0.5} \hfill}%
-        \ifx\beamer@noteitems%
-          \@empty%
+        \ifx\beamer@noteitems\@empty%
         \else%
           \setbeamertemplate{itemize item}{\includegraphics[width=1ex,keepaspectratio]{Item}}%
           \setbeamertemplate{itemize subitem}{\includegraphics[width=1ex,keepaspectratio]{SubItem}}%
